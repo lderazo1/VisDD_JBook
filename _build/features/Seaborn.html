@@ -1,0 +1,459 @@
+---
+redirect_from:
+  - "/features/seaborn"
+interact_link: content/features/Seaborn.ipynb
+kernel_name: python2
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Seaborn
+pagenum: 2
+prev_page:
+  url: /features/features.html
+next_page:
+  url: /features/Bokeh.html
+suffix: .ipynb
+search: de p style text align h una seaborn es en y utpl institucional uso librera para que matplotlib las datos simple grfica img src www edu ec manualimagen images color jpg width pxheight px center justifyseaborn python permite generar fcilmente elegantes grficos esta basada proporciona interfaz alto nivel realmente sencilla aprender justifylectura archivo justifyel presente documento hace referencia condiciones atmosfricas la ciudad mxico justifybfuente bgobmx metadata disponible todo pblico conjunto versin enero brburl gob mx centergrfico lineas justifyuna ventajas su versatilidad como se puede transformar algo mejor visibilidad presentacin bra continuacin con el
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Seaborn</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.utpl.edu.ec/manual_imagen/images/institucional/UTPL-INSTITUCIONAL-color.jpg" style = "width:510px;height:180px"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1 style="text-align: center;"> Uso Librería Seaborn </H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Seaborn es una librería para Python que permite generar fácilmente elegantes gráficos. Seaborn esta basada en matplotlib y proporciona una interfaz de alto nivel que es realmente sencilla de aprender.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Lectura Archivo</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;DATA/condiciones-atmosfericas.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">El presente documento hace referencia a las condiciones atmosféricas en la ciudad de México</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>cityid</th>
+      <th>date-insert</th>
+      <th>iconcode</th>
+      <th>lastreporttime</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>name</th>
+      <th>probabilityofprecip</th>
+      <th>relativehumidity</th>
+      <th>skydescriptionlong</th>
+      <th>state</th>
+      <th>stateabbr</th>
+      <th>tempc</th>
+      <th>validdateutc</th>
+      <th>winddirectioncardinal</th>
+      <th>windspeedkm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5952983359954a0adbf7ab09</td>
+      <td>MXAS0002</td>
+      <td>2017-06-27T17:36:43.084Z</td>
+      <td>96</td>
+      <td>20170627T092449Z</td>
+      <td>21.87982</td>
+      <td>-102.2960</td>
+      <td>Aguascalientes</td>
+      <td>40</td>
+      <td>90</td>
+      <td>Tormentas dispersas</td>
+      <td>Aguascalientes</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>20170627T140000Z</td>
+      <td>SSE</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5952983359954a0adbf7ab0a</td>
+      <td>MXAS0170</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>96</td>
+      <td>20170627T092453Z</td>
+      <td>22.23832</td>
+      <td>-102.0893</td>
+      <td>Asientos</td>
+      <td>60</td>
+      <td>91</td>
+      <td>Tormentas dispersas</td>
+      <td>Aguascalientes</td>
+      <td>AGU</td>
+      <td>15</td>
+      <td>20170627T140000Z</td>
+      <td>S</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5952983359954a0adbf7ab0b</td>
+      <td>MXAS0171</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>96</td>
+      <td>20170627T092453Z</td>
+      <td>21.84691</td>
+      <td>-102.7188</td>
+      <td>Calvillo</td>
+      <td>60</td>
+      <td>84</td>
+      <td>Tormentas dispersas</td>
+      <td>Aguascalientes</td>
+      <td>AGU</td>
+      <td>19</td>
+      <td>20170627T140000Z</td>
+      <td>E</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5952983359954a0adbf7ab0c</td>
+      <td>MXAS0172</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>96</td>
+      <td>20170627T092453Z</td>
+      <td>22.36641</td>
+      <td>-102.3000</td>
+      <td>Cosío</td>
+      <td>50</td>
+      <td>83</td>
+      <td>Tormentas dispersas</td>
+      <td>Aguascalientes</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>20170627T140000Z</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5952983359954a0adbf7ab0d</td>
+      <td>MXAS0173</td>
+      <td>2017-06-27T17:36:43.089Z</td>
+      <td>96</td>
+      <td>20170627T092453Z</td>
+      <td>21.91887</td>
+      <td>-101.9653</td>
+      <td>El Llano</td>
+      <td>50</td>
+      <td>84</td>
+      <td>Tormentas dispersas</td>
+      <td>Aguascalientes</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>20170627T140000Z</td>
+      <td>SSO</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;"><b>Fuente: </b>GobMX, Metadata disponible para todo público. [Conjunto de datos]. Versión de enero de 2019.<br><b>URL: </b><a>hhttps://datos.gob.mx/</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([u&#39;_id&#39;, u&#39;cityid&#39;, u&#39;date-insert&#39;, u&#39;iconcode&#39;, u&#39;lastreporttime&#39;,
+       u&#39;latitude&#39;, u&#39;longitude&#39;, u&#39;name&#39;, u&#39;probabilityofprecip&#39;,
+       u&#39;relativehumidity&#39;, u&#39;skydescriptionlong&#39;, u&#39;state&#39;, u&#39;stateabbr&#39;,
+       u&#39;tempc&#39;, u&#39;validdateutc&#39;, u&#39;winddirectioncardinal&#39;, u&#39;windspeedkm&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H2 style="text-align: center;">Gráfico de Lineas</H2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Una de las ventajas de seaborn es su versatilidad y como se puede transformar una simple gráfica en algo de mejor visibilidad y presentación.<br>A continuación, una gráfica simple con el uso de matplotlib</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">x</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probabilidad de Precipitacion por ciudades&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([&lt;matplotlib.axis.XTick at 0x7f781ea09a10&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f7820b2f510&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f7820b2f910&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9b4c90&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9bf210&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9bf7d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9bfd90&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9c8390&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9c8950&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9c8f10&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e953510&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9bf950&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e9531d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e953a50&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f781e95b050&gt;],
+ &lt;a list of 15 Text xticklabel objects&gt;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/Seaborn_13_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#sns.set()</span>
+<span class="c1">#plt.plot(y, x)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

@@ -1,0 +1,2923 @@
+---
+redirect_from:
+  - "/features/widgets-bokeh"
+interact_link: content/features/Widgets_Bokeh.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Widgets Bokeh
+pagenum: 4
+prev_page:
+  url: /features/Bokeh.html
+next_page:
+  url: 
+suffix: .ipynb
+search: de p style la text align para una h widgets que bokeh en datos interactivos funciones los grfica ejemplo conjunto archivo utpl institucional hbokeh son se pueden las creacin con el importacin libreras ppara uso un pel justifylectura justifyel presente documento hace referencia espaola justifybfuente web comunidad versin enero brburl gob es img src www edu ec manualimagen images color jpg width pxheight px plos controles agregar aplicaciones proporcionar interfaz usuario front end visualizacin conducir nuevos clculos actualizar impresiones grficos y conectarse otras pa continuacin presentamos unos ejemplos explicativos simulan su funcionamiento pasos seguir mismos utilizamos comn casos cuando realizamos
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Widgets Bokeh</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.utpl.edu.ec/manual_imagen/images/institucional/UTPL-INSTITUCIONAL-color.jpg" style = "width:510px;height:180px"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1>Bokeh Widgets</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Los widgets son controles interactivos que se pueden agregar a las aplicaciones Bokeh para proporcionar una interfaz de usuario front-end para una visualización. Pueden conducir nuevos cálculos, actualizar impresiones de gráficos y conectarse a otras funciones de Bokeh.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A continuación, presentamos unos ejemplos explicativos que simulan su funcionamiento, los pasos a seguir para creaciòn de una gráfica con widgets, son los mismos que utilizamos en el común de los casos cuando realizamos una gráfica normal</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1. Importación de librerías Bokeh</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># LIbrerias estrándar de Bokeh</span>
+<span class="kn">import</span> <span class="nn">bokeh</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_notebook</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">reset_output</span><span class="p">,</span> <span class="n">push_notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">Slider</span><span class="p">,</span> <span class="n">CustomJS</span><span class="p">,</span> <span class="n">Range1d</span><span class="p">,</span> <span class="n">HoverTool</span><span class="p">,</span> <span class="n">Panel</span><span class="p">,</span> <span class="n">Tabs</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">Figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata</span> <span class="kn">import</span> <span class="n">iris</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span><span class="p">,</span> <span class="n">factor_mark</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1. Importación de librerías externas</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2. Ejecución Bokeh en Jupyter Notebook</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1>Sliders</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para empezar, vamos a analizar la estructora para la elaboración de una gráfica haciendo uso de un Slider</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>EL ejemplo permite modificar el radio de un conjunto simple de valores</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create figura</span>
+<span class="n">change_plot_size</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">change_plot_size_r</span> <span class="o">=</span> <span class="n">change_plot_size</span><span class="o">.</span><span class="n">circle</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># creacion widget</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">js_link</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">change_plot_size_r</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">change_plot_size</span><span class="p">,</span> <span class="n">slider</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="b91c1f1e-4bdd-4297-b222-321bc12db1b2" data-root-id="2622"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="b6d00933-4fe7-4ecb-8a7c-022d7ec47cc6"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#b6d00933-4fe7-4ecb-8a7c-022d7ec47cc6');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"b37fd93b-a289-4ed5-8eec-8c43ecbb8524":{"roots":{"references":[{"attributes":{"children":[{"id":"2583","subtype":"Figure","type":"Plot"},{"id":"2620","type":"Slider"}]},"id":"2622","type":"Column"},{"attributes":{"callback":null,"end":1,"js_property_callbacks":{"change:value":[{"id":"2621","type":"CustomJS"}]},"start":0.1,"step":0.01,"value":0.2},"id":"2620","type":"Slider"},{"attributes":{},"id":"2680","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"2615","type":"ColumnDataSource"}},"id":"2619","type":"CDSView"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"2684","type":"BoxAnnotation"},{"attributes":{},"id":"2590","type":"LinearScale"},{"attributes":{},"id":"2686","type":"UnionRenderers"},{"attributes":{"below":[{"id":"2592","type":"LinearAxis"}],"center":[{"id":"2596","type":"Grid"},{"id":"2601","type":"Grid"}],"left":[{"id":"2597","type":"LinearAxis"}],"plot_height":400,"plot_width":400,"renderers":[{"id":"2618","type":"GlyphRenderer"}],"title":{"id":"2679","type":"Title"},"toolbar":{"id":"2608","type":"Toolbar"},"x_range":{"id":"2584","type":"DataRange1d"},"x_scale":{"id":"2588","type":"LinearScale"},"y_range":{"id":"2586","type":"DataRange1d"},"y_scale":{"id":"2590","type":"LinearScale"}},"id":"2583","subtype":"Figure","type":"Plot"},{"attributes":{"ticker":{"id":"2593","type":"BasicTicker"}},"id":"2596","type":"Grid"},{"attributes":{"callback":null},"id":"2586","type":"DataRange1d"},{"attributes":{},"id":"2605","type":"SaveTool"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.5},"line_color":{"value":"#1f77b4"},"radius":{"units":"data","value":0.1},"x":{"field":"x"},"y":{"field":"y"}},"id":"2616","type":"Circle"},{"attributes":{},"id":"2588","type":"LinearScale"},{"attributes":{},"id":"2607","type":"HelpTool"},{"attributes":{},"id":"2593","type":"BasicTicker"},{"attributes":{"formatter":{"id":"2682","type":"BasicTickFormatter"},"ticker":{"id":"2598","type":"BasicTicker"}},"id":"2597","type":"LinearAxis"},{"attributes":{"callback":null,"data":{"x":[1,2,3,4,5],"y":[3,2,5,6,4]},"selected":{"id":"2685","type":"Selection"},"selection_policy":{"id":"2686","type":"UnionRenderers"}},"id":"2615","type":"ColumnDataSource"},{"attributes":{},"id":"2685","type":"Selection"},{"attributes":{"formatter":{"id":"2680","type":"BasicTickFormatter"},"ticker":{"id":"2593","type":"BasicTicker"}},"id":"2592","type":"LinearAxis"},{"attributes":{},"id":"2603","type":"WheelZoomTool"},{"attributes":{"text":""},"id":"2679","type":"Title"},{"attributes":{"callback":null},"id":"2584","type":"DataRange1d"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"2602","type":"PanTool"},{"id":"2603","type":"WheelZoomTool"},{"id":"2604","type":"BoxZoomTool"},{"id":"2605","type":"SaveTool"},{"id":"2606","type":"ResetTool"},{"id":"2607","type":"HelpTool"}]},"id":"2608","type":"Toolbar"},{"attributes":{"args":{"other":{"id":"2616","type":"Circle"}},"code":"other.radius = this.value"},"id":"2621","type":"CustomJS"},{"attributes":{"data_source":{"id":"2615","type":"ColumnDataSource"},"glyph":{"id":"2616","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"2617","type":"Circle"},"selection_glyph":null,"view":{"id":"2619","type":"CDSView"}},"id":"2618","type":"GlyphRenderer"},{"attributes":{},"id":"2606","type":"ResetTool"},{"attributes":{},"id":"2682","type":"BasicTickFormatter"},{"attributes":{},"id":"2602","type":"PanTool"},{"attributes":{},"id":"2598","type":"BasicTicker"},{"attributes":{"dimension":1,"ticker":{"id":"2598","type":"BasicTicker"}},"id":"2601","type":"Grid"},{"attributes":{"overlay":{"id":"2684","type":"BoxAnnotation"}},"id":"2604","type":"BoxZoomTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"radius":{"units":"data","value":0.1},"x":{"field":"x"},"y":{"field":"y"}},"id":"2617","type":"Circle"}],"root_ids":["2622"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"b37fd93b-a289-4ed5-8eec-8c43ecbb8524","roots":{"2622":"b91c1f1e-4bdd-4297-b222-321bc12db1b2"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>El siguiente gráfico representa una onda sinusoidal, que generalmente se utiliza para análisis de funciones matemáticas, como por ejemplo seno o coseno.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1141">Loading BokehJS ...</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="a2e4d05f-df3f-46ce-b58c-73da4df5ebf7"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#a2e4d05f-df3f-46ce-b58c-73da4df5ebf7');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1141");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };var element = document.getElementById("1141");
+  if (element == null) {
+    console.error("Bokeh: ERROR: autoload.js configured with elementid '1141' but no matching script tag was found. ")
+    return false;
+  }
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.4.0.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1141")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">plot</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">amp_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Amplitud&quot;</span><span class="p">)</span>
+<span class="n">frec_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">)</span>
+<span class="n">fase_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mf">6.4</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Fase&quot;</span><span class="p">)</span>
+<span class="n">pos_slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Posicion&quot;</span><span class="p">)</span>
+
+<span class="n">callback</span> <span class="o">=</span> <span class="n">CustomJS</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">amp_slider</span><span class="p">,</span> <span class="n">frec</span><span class="o">=</span><span class="n">frec_slider</span><span class="p">,</span> <span class="n">fase</span><span class="o">=</span><span class="n">fase_slider</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos_slider</span><span class="p">),</span>
+                    <span class="n">code</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    const data = source.data;</span>
+<span class="s2">    const A = amp.value;</span>
+<span class="s2">    const k = frec.value;</span>
+<span class="s2">    const phi = fase.value;</span>
+<span class="s2">    const B = pos.value;</span>
+<span class="s2">    const x = data[&#39;x&#39;]</span>
+<span class="s2">    const y = data[&#39;y&#39;]</span>
+<span class="s2">    for (var i = 0; i &lt; x.length; i++) {</span>
+<span class="s2">        y[i] = B + A*Math.sin(k*x[i]+phi);</span>
+<span class="s2">    }</span>
+<span class="s2">    source.change.emit();</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">amp_slider</span><span class="o">.</span><span class="n">js_on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="n">frec_slider</span><span class="o">.</span><span class="n">js_on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="n">fase_slider</span><span class="o">.</span><span class="n">js_on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="n">pos_slider</span><span class="o">.</span><span class="n">js_on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">row</span><span class="p">(</span>
+    <span class="n">plot</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">(</span><span class="n">amp_slider</span><span class="p">,</span> <span class="n">frec_slider</span><span class="p">,</span> <span class="n">fase_slider</span><span class="p">,</span> <span class="n">pos_slider</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;slider.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;slider.py ejemplo&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="a835046a-7fdd-446f-8ff6-22cf01b32d4d" data-root-id="1186"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="c5d14da0-c424-48c8-8357-dfc86cbd9c81"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c5d14da0-c424-48c8-8357-dfc86cbd9c81');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"9dec75f0-e4c2-4765-bb98-28a03248e444":{"roots":{"references":[{"attributes":{"children":[{"id":"1143","subtype":"Figure","type":"Plot"},{"id":"1185","type":"Column"}]},"id":"1186","type":"Row"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1177","type":"Line"},{"attributes":{"callback":null,"end":6.4,"js_property_callbacks":{"change:value":[{"id":"1184","type":"CustomJS"}]},"start":0,"step":0.1,"title":"Fase","value":0},"id":"1182","type":"Slider"},{"attributes":{"callback":null,"end":10,"js_property_callbacks":{"change:value":[{"id":"1184","type":"CustomJS"}]},"start":0.1,"step":0.1,"title":"Amplitud","value":1},"id":"1180","type":"Slider"},{"attributes":{},"id":"1189","type":"BasicTickFormatter"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1162","type":"PanTool"},{"id":"1163","type":"WheelZoomTool"},{"id":"1164","type":"BoxZoomTool"},{"id":"1165","type":"SaveTool"},{"id":"1166","type":"ResetTool"},{"id":"1167","type":"HelpTool"}]},"id":"1168","type":"Toolbar"},{"attributes":{"text":""},"id":"1188","type":"Title"},{"attributes":{},"id":"1162","type":"PanTool"},{"attributes":{"below":[{"id":"1152","type":"LinearAxis"}],"center":[{"id":"1156","type":"Grid"},{"id":"1161","type":"Grid"}],"left":[{"id":"1157","type":"LinearAxis"}],"plot_height":400,"plot_width":400,"renderers":[{"id":"1178","type":"GlyphRenderer"}],"title":{"id":"1188","type":"Title"},"toolbar":{"id":"1168","type":"Toolbar"},"x_range":{"id":"1144","type":"DataRange1d"},"x_scale":{"id":"1148","type":"LinearScale"},"y_range":{"id":"1146","type":"Range1d"},"y_scale":{"id":"1150","type":"LinearScale"}},"id":"1143","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1191","type":"BasicTickFormatter"},{"attributes":{},"id":"1163","type":"WheelZoomTool"},{"attributes":{"callback":null,"data":{"x":{"__ndarray__":"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","dtype":"float64","shape":[500]},"y":{"__ndarray__":"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","dtype":"float64","shape":[500]}},"selected":{"id":"1194","type":"Selection"},"selection_policy":{"id":"1195","type":"UnionRenderers"}},"id":"1142","type":"ColumnDataSource"},{"attributes":{"overlay":{"id":"1193","type":"BoxAnnotation"}},"id":"1164","type":"BoxZoomTool"},{"attributes":{"data_source":{"id":"1142","type":"ColumnDataSource"},"glyph":{"id":"1176","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1177","type":"Line"},"selection_glyph":null,"view":{"id":"1179","type":"CDSView"}},"id":"1178","type":"GlyphRenderer"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1193","type":"BoxAnnotation"},{"attributes":{},"id":"1165","type":"SaveTool"},{"attributes":{},"id":"1194","type":"Selection"},{"attributes":{},"id":"1166","type":"ResetTool"},{"attributes":{},"id":"1195","type":"UnionRenderers"},{"attributes":{"callback":null},"id":"1144","type":"DataRange1d"},{"attributes":{},"id":"1167","type":"HelpTool"},{"attributes":{"line_alpha":0.6,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1176","type":"Line"},{"attributes":{"callback":null,"end":10,"start":-10},"id":"1146","type":"Range1d"},{"attributes":{"source":{"id":"1142","type":"ColumnDataSource"}},"id":"1179","type":"CDSView"},{"attributes":{},"id":"1148","type":"LinearScale"},{"attributes":{"callback":null,"end":10,"js_property_callbacks":{"change:value":[{"id":"1184","type":"CustomJS"}]},"start":0.1,"step":0.1,"title":"Frecuencia","value":1},"id":"1181","type":"Slider"},{"attributes":{},"id":"1150","type":"LinearScale"},{"attributes":{"formatter":{"id":"1189","type":"BasicTickFormatter"},"ticker":{"id":"1153","type":"BasicTicker"}},"id":"1152","type":"LinearAxis"},{"attributes":{"callback":null,"end":5,"js_property_callbacks":{"change:value":[{"id":"1184","type":"CustomJS"}]},"start":-5,"step":0.1,"title":"Posicion","value":0},"id":"1183","type":"Slider"},{"attributes":{"args":{"amp":{"id":"1180","type":"Slider"},"fase":{"id":"1182","type":"Slider"},"frec":{"id":"1181","type":"Slider"},"pos":{"id":"1183","type":"Slider"},"source":{"id":"1142","type":"ColumnDataSource"}},"code":"\n    const data = source.data;\n    const A = amp.value;\n    const k = frec.value;\n    const phi = fase.value;\n    const B = pos.value;\n    const x = data['x']\n    const y = data['y']\n    for (var i = 0; i < x.length; i++) {\n        y[i] = B + A*Math.sin(k*x[i]+phi);\n    }\n    source.change.emit();\n"},"id":"1184","type":"CustomJS"},{"attributes":{},"id":"1153","type":"BasicTicker"},{"attributes":{"ticker":{"id":"1153","type":"BasicTicker"}},"id":"1156","type":"Grid"},{"attributes":{"formatter":{"id":"1191","type":"BasicTickFormatter"},"ticker":{"id":"1158","type":"BasicTicker"}},"id":"1157","type":"LinearAxis"},{"attributes":{},"id":"1158","type":"BasicTicker"},{"attributes":{"children":[{"id":"1180","type":"Slider"},{"id":"1181","type":"Slider"},{"id":"1182","type":"Slider"},{"id":"1183","type":"Slider"}]},"id":"1185","type":"Column"},{"attributes":{"dimension":1,"ticker":{"id":"1158","type":"BasicTicker"}},"id":"1161","type":"Grid"}],"root_ids":["1186"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"9dec75f0-e4c2-4765-bb98-28a03248e444","roots":{"1186":"a835046a-7fdd-446f-8ff6-22cf01b32d4d"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La misma ejemplificación del ejemplo anterior, pero ahora con funciones trigonomètricas</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1341">Loading BokehJS ...</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="f9f05df6-1906-4855-bd4f-27b379d618ca"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f9f05df6-1906-4855-bd4f-27b379d618ca');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1341");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };var element = document.getElementById("1341");
+  if (element == null) {
+    console.error("Bokeh: ERROR: autoload.js configured with elementid '1341' but no matching script tag was found. ")
+    return false;
+  }
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.4.0.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1341")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Definicion inicial de datos</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mf">0.05</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)]</span>
+<span class="n">func_trig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">x</span><span class="p">)}</span>
+<span class="n">initial_function</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+
+<span class="c1"># Creacion de ColumnDataSources</span>
+<span class="n">source_visible</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">func_trig</span><span class="p">[</span><span class="n">initial_function</span><span class="p">]))</span>
+<span class="n">source_available</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">func_trig</span><span class="p">)</span>
+
+<span class="c1"># Define plot elements</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source_visible</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Funciones Trigonométricas&#39;</span><span class="p">,</span>
+                <span class="n">value</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">initial_function</span><span class="p">),</span>
+                <span class="n">start</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">func_trig</span><span class="o">.</span><span class="n">keys</span><span class="p">()]),</span>
+                <span class="n">end</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">func_trig</span><span class="o">.</span><span class="n">keys</span><span class="p">()]),</span>
+                <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#CustomJS nos permite actualizar a la gràfica en tiempo real</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">CustomJS</span><span class="p">(</span>
+    <span class="n">args</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">source_visible</span><span class="o">=</span><span class="n">source_visible</span><span class="p">,</span>
+              <span class="n">source_available</span><span class="o">=</span><span class="n">source_available</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        var selected_function = cb_obj.value;</span>
+<span class="s2">        var data_visible = source_visible.data;</span>
+<span class="s2">        var data_available = source_available.data;</span>
+<span class="s2">        data_visible.y = data_available[selected_function];</span>
+<span class="s2">        source_visible.change.emit();</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">row</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">slider</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="0c00c86a-add4-41e4-bfef-59927f364990" data-root-id="1383"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="7086436e-514b-41f7-98f8-a5544929344f"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#7086436e-514b-41f7-98f8-a5544929344f');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"1950d61c-a79e-4d56-862e-e57101b3f997":{"roots":{"references":[{"attributes":{"children":[{"id":"1344","subtype":"Figure","type":"Plot"},{"id":"1381","type":"Slider"}]},"id":"1383","type":"Row"},{"attributes":{},"id":"1359","type":"BasicTicker"},{"attributes":{"dimension":1,"ticker":{"id":"1359","type":"BasicTicker"}},"id":"1362","type":"Grid"},{"attributes":{"formatter":{"id":"1395","type":"BasicTickFormatter"},"ticker":{"id":"1354","type":"BasicTicker"}},"id":"1353","type":"LinearAxis"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1363","type":"PanTool"},{"id":"1364","type":"WheelZoomTool"},{"id":"1365","type":"BoxZoomTool"},{"id":"1366","type":"SaveTool"},{"id":"1367","type":"ResetTool"},{"id":"1368","type":"HelpTool"}]},"id":"1369","type":"Toolbar"},{"attributes":{},"id":"1401","type":"UnionRenderers"},{"attributes":{"line_alpha":0.6,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1377","type":"Line"},{"attributes":{},"id":"1349","type":"LinearScale"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1378","type":"Line"},{"attributes":{},"id":"1364","type":"WheelZoomTool"},{"attributes":{"below":[{"id":"1353","type":"LinearAxis"}],"center":[{"id":"1357","type":"Grid"},{"id":"1362","type":"Grid"}],"left":[{"id":"1358","type":"LinearAxis"}],"plot_height":400,"plot_width":400,"renderers":[{"id":"1379","type":"GlyphRenderer"}],"title":{"id":"1394","type":"Title"},"toolbar":{"id":"1369","type":"Toolbar"},"x_range":{"id":"1345","type":"DataRange1d"},"x_scale":{"id":"1349","type":"LinearScale"},"y_range":{"id":"1347","type":"DataRange1d"},"y_scale":{"id":"1351","type":"LinearScale"}},"id":"1344","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1363","type":"PanTool"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1399","type":"BoxAnnotation"},{"attributes":{"ticker":{"id":"1354","type":"BasicTicker"}},"id":"1357","type":"Grid"},{"attributes":{"callback":null},"id":"1347","type":"DataRange1d"},{"attributes":{"text":""},"id":"1394","type":"Title"},{"attributes":{},"id":"1367","type":"ResetTool"},{"attributes":{},"id":"1395","type":"BasicTickFormatter"},{"attributes":{"callback":null},"id":"1345","type":"DataRange1d"},{"attributes":{},"id":"1368","type":"HelpTool"},{"attributes":{},"id":"1351","type":"LinearScale"},{"attributes":{},"id":"1400","type":"Selection"},{"attributes":{"callback":{"id":"1382","type":"CustomJS"},"end":3,"start":0,"title":"Funciones Trigonom\u00e9tricas","value":0},"id":"1381","type":"Slider"},{"attributes":{"source":{"id":"1342","type":"ColumnDataSource"}},"id":"1380","type":"CDSView"},{"attributes":{"args":{"source_available":{"id":"1343","type":"ColumnDataSource"},"source_visible":{"id":"1342","type":"ColumnDataSource"}},"code":"\n        var selected_function = cb_obj.value;\n        var data_visible = source_visible.data;\n        var data_available = source_available.data;\n        data_visible.y = data_available[selected_function];\n        source_visible.change.emit();\n    "},"id":"1382","type":"CustomJS"},{"attributes":{"data_source":{"id":"1342","type":"ColumnDataSource"},"glyph":{"id":"1377","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1378","type":"Line"},"selection_glyph":null,"view":{"id":"1380","type":"CDSView"}},"id":"1379","type":"GlyphRenderer"},{"attributes":{},"id":"1366","type":"SaveTool"},{"attributes":{"formatter":{"id":"1397","type":"BasicTickFormatter"},"ticker":{"id":"1359","type":"BasicTicker"}},"id":"1358","type":"LinearAxis"},{"attributes":{"callback":null,"data":{"0":{"__ndarray__":"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","dtype":"float64","shape":[500]},"1":{"__ndarray__":"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","dtype":"float64","shape":[500]},"2":{"__ndarray__":"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","dtype":"float64","shape":[500]},"3":{"__ndarray__":"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","dtype":"float64","shape":[500]}},"selected":{"id":"1402","type":"Selection"},"selection_policy":{"id":"1403","type":"UnionRenderers"}},"id":"1343","type":"ColumnDataSource"},{"attributes":{},"id":"1403","type":"UnionRenderers"},{"attributes":{"callback":null,"data":{"x":[0.0,0.05,0.1,0.15000000000000002,0.2,0.25,0.30000000000000004,0.35000000000000003,0.4,0.45,0.5,0.55,0.6000000000000001,0.65,0.7000000000000001,0.75,0.8,0.8500000000000001,0.9,0.9500000000000001,1.0,1.05,1.1,1.1500000000000001,1.2000000000000002,1.25,1.3,1.35,1.4000000000000001,1.4500000000000002,1.5,1.55,1.6,1.6500000000000001,1.7000000000000002,1.75,1.8,1.85,1.9000000000000001,1.9500000000000002,2.0,2.0500000000000003,2.1,2.15,2.2,2.25,2.3000000000000003,2.35,2.4000000000000004,2.45,2.5,2.5500000000000003,2.6,2.6500000000000004,2.7,2.75,2.8000000000000003,2.85,2.9000000000000004,2.95,3.0,3.0500000000000003,3.1,3.1500000000000004,3.2,3.25,3.3000000000000003,3.35,3.4000000000000004,3.45,3.5,3.5500000000000003,3.6,3.6500000000000004,3.7,3.75,3.8000000000000003,3.85,3.9000000000000004,3.95,4.0,4.05,4.1000000000000005,4.15,4.2,4.25,4.3,4.3500000000000005,4.4,4.45,4.5,4.55,4.6000000000000005,4.65,4.7,4.75,4.800000000000001,4.8500000000000005,4.9,4.95,5.0,5.050000000000001,5.1000000000000005,5.15,5.2,5.25,5.300000000000001,5.3500000000000005,5.4,5.45,5.5,5.550000000000001,5.6000000000000005,5.65,5.7,5.75,5.800000000000001,5.8500000000000005,5.9,5.95,6.0,6.050000000000001,6.1000000000000005,6.15,6.2,6.25,6.300000000000001,6.3500000000000005,6.4,6.45,6.5,6.550000000000001,6.6000000000000005,6.65,6.7,6.75,6.800000000000001,6.8500000000000005,6.9,6.95,7.0,7.050000000000001,7.1000000000000005,7.15,7.2,7.25,7.300000000000001,7.3500000000000005,7.4,7.45,7.5,7.550000000000001,7.6000000000000005,7.65,7.7,7.75,7.800000000000001,7.8500000000000005,7.9,7.95,8.0,8.05,8.1,8.15,8.200000000000001,8.25,8.3,8.35,8.4,8.450000000000001,8.5,8.55,8.6,8.65,8.700000000000001,8.75,8.8,8.85,8.9,8.950000000000001,9.0,9.05,9.1,9.15,9.200000000000001,9.25,9.3,9.35,9.4,9.450000000000001,9.5,9.55,9.600000000000001,9.65,9.700000000000001,9.75,9.8,9.850000000000001,9.9,9.950000000000001,10.0,10.05,10.100000000000001,10.15,10.200000000000001,10.25,10.3,10.350000000000001,10.4,10.450000000000001,10.5,10.55,10.600000000000001,10.65,10.700000000000001,10.75,10.8,10.850000000000001,10.9,10.950000000000001,11.0,11.05,11.100000000000001,11.15,11.200000000000001,11.25,11.3,11.350000000000001,11.4,11.450000000000001,11.5,11.55,11.600000000000001,11.65,11.700000000000001,11.75,11.8,11.850000000000001,11.9,11.950000000000001,12.0,12.05,12.100000000000001,12.15,12.200000000000001,12.25,12.3,12.350000000000001,12.4,12.450000000000001,12.5,12.55,12.600000000000001,12.65,12.700000000000001,12.75,12.8,12.850000000000001,12.9,12.950000000000001,13.0,13.05,13.100000000000001,13.15,13.200000000000001,13.25,13.3,13.350000000000001,13.4,13.450000000000001,13.5,13.55,13.600000000000001,13.65,13.700000000000001,13.75,13.8,13.850000000000001,13.9,13.950000000000001,14.0,14.05,14.100000000000001,14.15,14.200000000000001,14.25,14.3,14.350000000000001,14.4,14.450000000000001,14.5,14.55,14.600000000000001,14.65,14.700000000000001,14.75,14.8,14.850000000000001,14.9,14.950000000000001,15.0,15.05,15.100000000000001,15.15,15.200000000000001,15.25,15.3,15.350000000000001,15.4,15.450000000000001,15.5,15.55,15.600000000000001,15.65,15.700000000000001,15.75,15.8,15.850000000000001,15.9,15.950000000000001,16.0,16.05,16.1,16.150000000000002,16.2,16.25,16.3,16.35,16.400000000000002,16.45,16.5,16.55,16.6,16.650000000000002,16.7,16.75,16.8,16.85,16.900000000000002,16.95,17.0,17.05,17.1,17.150000000000002,17.2,17.25,17.3,17.35,17.400000000000002,17.45,17.5,17.55,17.6,17.650000000000002,17.7,17.75,17.8,17.85,17.900000000000002,17.95,18.0,18.05,18.1,18.150000000000002,18.2,18.25,18.3,18.35,18.400000000000002,18.45,18.5,18.55,18.6,18.650000000000002,18.7,18.75,18.8,18.85,18.900000000000002,18.95,19.0,19.05,19.1,19.150000000000002,19.200000000000003,19.25,19.3,19.35,19.400000000000002,19.450000000000003,19.5,19.55,19.6,19.650000000000002,19.700000000000003,19.75,19.8,19.85,19.900000000000002,19.950000000000003,20.0,20.05,20.1,20.150000000000002,20.200000000000003,20.25,20.3,20.35,20.400000000000002,20.450000000000003,20.5,20.55,20.6,20.650000000000002,20.700000000000003,20.75,20.8,20.85,20.900000000000002,20.950000000000003,21.0,21.05,21.1,21.150000000000002,21.200000000000003,21.25,21.3,21.35,21.400000000000002,21.450000000000003,21.5,21.55,21.6,21.650000000000002,21.700000000000003,21.75,21.8,21.85,21.900000000000002,21.950000000000003,22.0,22.05,22.1,22.150000000000002,22.200000000000003,22.25,22.3,22.35,22.400000000000002,22.450000000000003,22.5,22.55,22.6,22.650000000000002,22.700000000000003,22.75,22.8,22.85,22.900000000000002,22.950000000000003,23.0,23.05,23.1,23.150000000000002,23.200000000000003,23.25,23.3,23.35,23.400000000000002,23.450000000000003,23.5,23.55,23.6,23.650000000000002,23.700000000000003,23.75,23.8,23.85,23.900000000000002,23.950000000000003,24.0,24.05,24.1,24.150000000000002,24.200000000000003,24.25,24.3,24.35,24.400000000000002,24.450000000000003,24.5,24.55,24.6,24.650000000000002,24.700000000000003,24.75,24.8,24.85,24.900000000000002,24.950000000000003],"y":{"__ndarray__":"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","dtype":"float64","shape":[500]}},"selected":{"id":"1400","type":"Selection"},"selection_policy":{"id":"1401","type":"UnionRenderers"}},"id":"1342","type":"ColumnDataSource"},{"attributes":{},"id":"1402","type":"Selection"},{"attributes":{"overlay":{"id":"1399","type":"BoxAnnotation"}},"id":"1365","type":"BoxZoomTool"},{"attributes":{},"id":"1397","type":"BasicTickFormatter"},{"attributes":{},"id":"1354","type":"BasicTicker"}],"root_ids":["1383"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"1950d61c-a79e-4d56-862e-e57101b3f997","roots":{"1383":"0c00c86a-add4-41e4-bfef-59927f364990"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1>Gráficas Combinadas</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Lectura Archivo</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;DATA/biblio.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">El presente documento hace referencia a la estadística general de la Bibliografía Española en Línea</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df0</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Periodo</th>
+      <th>Monografias</th>
+      <th>Pub_periodicas</th>
+      <th>Musica_impresa</th>
+      <th>Cartografia</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006</td>
+      <td>0.000</td>
+      <td>2.421</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>2.421</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2007</td>
+      <td>61.105</td>
+      <td>1.803</td>
+      <td>3.377</td>
+      <td>1.426</td>
+      <td>67.711</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2008</td>
+      <td>68.232</td>
+      <td>2.203</td>
+      <td>3.222</td>
+      <td>1.273</td>
+      <td>74.930</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2009</td>
+      <td>92.294</td>
+      <td>2.301</td>
+      <td>3.278</td>
+      <td>1.892</td>
+      <td>99.765</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2010</td>
+      <td>86.400</td>
+      <td>1.899</td>
+      <td>3.403</td>
+      <td>1.965</td>
+      <td>93.667</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;"><b>Fuente: </b>Archivo de la Web Española: Comunidad Autónoma de Aragón. [Conjunto de datos]. Versión de enero de 2019.<br><b>URL: </b><a>https://datos.gob.es/es/catalogo/e00123904-archivo-de-la-web-espanola-comunidad-autonoma-de-aragon</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df0</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;Periodo&#39;, &#39;Monografias&#39;, &#39;Pub_periodicas&#39;, &#39;Musica_impresa&#39;,
+       &#39;Cartografia&#39;, &#39;Subtotal&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Creación de figura</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df0</span> <span class="o">=</span> <span class="n">df0</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df0</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_keys([&#39;Periodo&#39;, &#39;Monografias&#39;, &#39;Pub_periodicas&#39;, &#39;Musica_impresa&#39;, &#39;Cartografia&#39;, &#39;Subtotal&#39;])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1599">Loading BokehJS ...</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="06a8a5ca-6653-41e5-af53-67676cd92d81"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#06a8a5ca-6653-41e5-af53-67676cd92d81');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1599");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };var element = document.getElementById("1599");
+  if (element == null) {
+    console.error("Bokeh: ERROR: autoload.js configured with elementid '1599' but no matching script tag was found. ")
+    return false;
+  }
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.4.0.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1599")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Subtotal&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Seguimiento de Bibliografía Nacional&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">yb</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#B3DE19&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;#B3DE19&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">xb1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">yb1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Cartografia&#39;</span><span class="p">]</span>
+<span class="n">ya1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Musica_impresa&#39;</span><span class="p">]</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Crecimiento Cartografia vs Musica Impresa de la Bibliografia Nacional&quot;</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yb1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span><span class="s2">&quot;Cartografia&quot;</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ya1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span><span class="s2">&quot;Musica&quot;</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Cartografia&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">tab1</span> <span class="o">=</span> <span class="n">Panel</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bibliografía Nacional&quot;</span><span class="p">)</span>
+<span class="n">tab2</span> <span class="o">=</span> <span class="n">Panel</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Crecimiento Cartografia&quot;</span><span class="p">)</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="p">[</span> <span class="n">tab1</span><span class="p">,</span> <span class="n">tab2</span> <span class="p">])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>BokehDeprecationWarning: &#39;legend&#39; keyword is deprecated, use explicit &#39;legend_label&#39;, &#39;legend_field&#39;, or &#39;legend_group&#39; keywords instead
+BokehDeprecationWarning: &#39;legend&#39; keyword is deprecated, use explicit &#39;legend_label&#39;, &#39;legend_field&#39;, or &#39;legend_group&#39; keywords instead
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="a99ed6e0-e159-43fc-877d-fa8bc70a91ab" data-root-id="1702"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="63c0816a-b312-41c6-a93d-1780198d99a8"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#63c0816a-b312-41c6-a93d-1780198d99a8');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"ef6f7f6a-4d76-4674-8477-3ce8a61903e9":{"roots":{"references":[{"attributes":{"callback":null,"tabs":[{"id":"1700","type":"Panel"},{"id":"1701","type":"Panel"}]},"id":"1702","type":"Tabs"},{"attributes":{"items":[{"id":"1685","type":"LegendItem"},{"id":"1699","type":"LegendItem"}]},"id":"1684","type":"Legend"},{"attributes":{},"id":"1622","type":"WheelZoomTool"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1683","type":"BoxAnnotation"},{"attributes":{},"id":"1656","type":"BasicTicker"},{"attributes":{"overlay":{"id":"1733","type":"BoxAnnotation"}},"id":"1623","type":"BoxZoomTool"},{"attributes":{"label":{"value":"Cartografia"},"renderers":[{"id":"1676","type":"GlyphRenderer"}]},"id":"1685","type":"LegendItem"},{"attributes":{"callback":null,"data":{"top":[2.421,67.711,74.93,99.765,93.667,71.855,74.123,62.63,58.826,58.967,48.625,35.948,6.074],"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]},"selected":{"id":"1734","type":"Selection"},"selection_policy":{"id":"1735","type":"UnionRenderers"}},"id":"1634","type":"ColumnDataSource"},{"attributes":{},"id":"1735","type":"UnionRenderers"},{"attributes":{"below":[{"id":"1611","type":"LinearAxis"}],"center":[{"id":"1615","type":"Grid"},{"id":"1620","type":"Grid"}],"left":[{"id":"1616","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"#B3DE19"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1637","type":"GlyphRenderer"}],"title":{"id":"1601","type":"Title"},"toolbar":{"id":"1627","type":"Toolbar"},"x_range":{"id":"1603","type":"DataRange1d"},"x_scale":{"id":"1607","type":"LinearScale"},"y_range":{"id":"1605","type":"DataRange1d"},"y_scale":{"id":"1609","type":"LinearScale"}},"id":"1600","subtype":"Figure","type":"Plot"},{"attributes":{"dimension":1,"ticker":{"id":"1656","type":"BasicTicker"}},"id":"1659","type":"Grid"},{"attributes":{},"id":"1624","type":"SaveTool"},{"attributes":{"line_color":"orange","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1687","type":"Line"},{"attributes":{},"id":"1734","type":"Selection"},{"attributes":{},"id":"1739","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1636","type":"VBar"},{"attributes":{},"id":"1625","type":"ResetTool"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1688","type":"Line"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1675","type":"Line"},{"attributes":{},"id":"1740","type":"UnionRenderers"},{"attributes":{"text":"Seguimiento de Bibliograf\u00eda Nacional"},"id":"1601","type":"Title"},{"attributes":{"data_source":{"id":"1686","type":"ColumnDataSource"},"glyph":{"id":"1687","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1688","type":"Line"},"selection_glyph":null,"view":{"id":"1690","type":"CDSView"}},"id":"1689","type":"GlyphRenderer"},{"attributes":{},"id":"1626","type":"HelpTool"},{"attributes":{"line_color":"green","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1674","type":"Line"},{"attributes":{"callback":null},"id":"1603","type":"DataRange1d"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1660","type":"PanTool"},{"id":"1661","type":"WheelZoomTool"},{"id":"1662","type":"BoxZoomTool"},{"id":"1663","type":"SaveTool"},{"id":"1664","type":"ResetTool"},{"id":"1665","type":"HelpTool"}]},"id":"1666","type":"Toolbar"},{"attributes":{"source":{"id":"1686","type":"ColumnDataSource"}},"id":"1690","type":"CDSView"},{"attributes":{},"id":"1660","type":"PanTool"},{"attributes":{"callback":null},"id":"1605","type":"DataRange1d"},{"attributes":{},"id":"1697","type":"Selection"},{"attributes":{},"id":"1661","type":"WheelZoomTool"},{"attributes":{"data_source":{"id":"1634","type":"ColumnDataSource"},"glyph":{"id":"1635","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1636","type":"VBar"},"selection_glyph":null,"view":{"id":"1638","type":"CDSView"}},"id":"1637","type":"GlyphRenderer"},{"attributes":{},"id":"1607","type":"LinearScale"},{"attributes":{"source":{"id":"1634","type":"ColumnDataSource"}},"id":"1638","type":"CDSView"},{"attributes":{"overlay":{"id":"1683","type":"BoxAnnotation"}},"id":"1662","type":"BoxZoomTool"},{"attributes":{},"id":"1698","type":"UnionRenderers"},{"attributes":{},"id":"1609","type":"LinearScale"},{"attributes":{"below":[{"id":"1650","type":"LinearAxis"}],"center":[{"id":"1654","type":"Grid"},{"id":"1659","type":"Grid"},{"id":"1684","type":"Legend"}],"left":[{"id":"1655","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"green"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1676","type":"GlyphRenderer"},{"id":"1689","type":"GlyphRenderer"}],"title":{"id":"1640","type":"Title"},"toolbar":{"id":"1666","type":"Toolbar"},"x_range":{"id":"1642","type":"DataRange1d"},"x_scale":{"id":"1646","type":"LinearScale"},"y_range":{"id":"1644","type":"DataRange1d"},"y_scale":{"id":"1648","type":"LinearScale"}},"id":"1639","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1663","type":"SaveTool"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,3.377,3.222,3.278,3.403,3.467,3.431,3.122,3.549,0.0,0.0,0.0,0.0]},"selected":{"id":"1739","type":"Selection"},"selection_policy":{"id":"1740","type":"UnionRenderers"}},"id":"1686","type":"ColumnDataSource"},{"attributes":{"label":{"value":"Musica"},"renderers":[{"id":"1689","type":"GlyphRenderer"}]},"id":"1699","type":"LegendItem"},{"attributes":{"formatter":{"id":"1725","type":"BasicTickFormatter"},"ticker":{"id":"1612","type":"BasicTicker"}},"id":"1611","type":"LinearAxis"},{"attributes":{},"id":"1664","type":"ResetTool"},{"attributes":{"child":{"id":"1639","subtype":"Figure","type":"Plot"},"title":"Crecimiento Cartografia"},"id":"1701","type":"Panel"},{"attributes":{"text":"Crecimiento Cartografia vs Musica Impresa de la Bibliografia Nacional"},"id":"1640","type":"Title"},{"attributes":{},"id":"1612","type":"BasicTicker"},{"attributes":{},"id":"1665","type":"HelpTool"},{"attributes":{"callback":null},"id":"1642","type":"DataRange1d"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1612","type":"BasicTicker"}},"id":"1615","type":"Grid"},{"attributes":{"callback":null},"id":"1644","type":"DataRange1d"},{"attributes":{"formatter":{"id":"1727","type":"BasicTickFormatter"},"ticker":{"id":"1617","type":"BasicTicker"}},"id":"1616","type":"LinearAxis"},{"attributes":{"data_source":{"id":"1673","type":"ColumnDataSource"},"glyph":{"id":"1674","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1675","type":"Line"},"selection_glyph":null,"view":{"id":"1677","type":"CDSView"}},"id":"1676","type":"GlyphRenderer"},{"attributes":{},"id":"1646","type":"LinearScale"},{"attributes":{"child":{"id":"1600","subtype":"Figure","type":"Plot"},"title":"Bibliograf\u00eda Nacional"},"id":"1700","type":"Panel"},{"attributes":{},"id":"1725","type":"BasicTickFormatter"},{"attributes":{},"id":"1617","type":"BasicTicker"},{"attributes":{},"id":"1648","type":"LinearScale"},{"attributes":{"dimension":1,"ticker":{"id":"1617","type":"BasicTicker"}},"id":"1620","type":"Grid"},{"attributes":{},"id":"1727","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"1673","type":"ColumnDataSource"}},"id":"1677","type":"CDSView"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"1679","type":"BasicTickFormatter"},"ticker":{"id":"1651","type":"BasicTicker"}},"id":"1650","type":"LinearAxis"},{"attributes":{},"id":"1679","type":"BasicTickFormatter"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1733","type":"BoxAnnotation"},{"attributes":{},"id":"1651","type":"BasicTicker"},{"attributes":{"fill_color":{"value":"#B3DE19"},"line_color":{"value":"#B3DE19"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1635","type":"VBar"},{"attributes":{},"id":"1681","type":"BasicTickFormatter"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,1.426,1.273,1.892,1.965,2.141,1.22,1.162,1.307,1.829,1.202,1.303,0.0]},"selected":{"id":"1697","type":"Selection"},"selection_policy":{"id":"1698","type":"UnionRenderers"}},"id":"1673","type":"ColumnDataSource"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1651","type":"BasicTicker"}},"id":"1654","type":"Grid"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1621","type":"PanTool"},{"id":"1622","type":"WheelZoomTool"},{"id":"1623","type":"BoxZoomTool"},{"id":"1624","type":"SaveTool"},{"id":"1625","type":"ResetTool"},{"id":"1626","type":"HelpTool"}]},"id":"1627","type":"Toolbar"},{"attributes":{},"id":"1621","type":"PanTool"},{"attributes":{"axis_label":"Cartografia","formatter":{"id":"1681","type":"BasicTickFormatter"},"ticker":{"id":"1656","type":"BasicTicker"}},"id":"1655","type":"LinearAxis"}],"root_ids":["1702"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"ef6f7f6a-4d76-4674-8477-3ce8a61903e9","roots":{"1702":"a99ed6e0-e159-43fc-877d-fa8bc70a91ab"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1>Widgets Interactivos</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para la creación de widgets interactivos haremos uso de ipywidgets</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Lectura Archivo</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;DATA/condiciones-atmosfericas.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">El presente documento hace referencia a las condiciones atmosféricas en la ciudad de México</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>cityid</th>
+      <th>validdateutc</th>
+      <th>winddirectioncardinal</th>
+      <th>probabilityofprecip</th>
+      <th>relativehumidity</th>
+      <th>name</th>
+      <th>date-insert</th>
+      <th>longitude</th>
+      <th>state</th>
+      <th>lastreporttime</th>
+      <th>skydescriptionlong</th>
+      <th>stateabbr</th>
+      <th>tempc</th>
+      <th>latitude</th>
+      <th>iconcode</th>
+      <th>windspeedkm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5952983359954a0adbf7ab09</td>
+      <td>MXAS0002</td>
+      <td>20170627T140000Z</td>
+      <td>SSE</td>
+      <td>40</td>
+      <td>90</td>
+      <td>Aguascalientes</td>
+      <td>2017-06-27T17:36:43.084Z</td>
+      <td>-102.2960</td>
+      <td>Aguascalientes</td>
+      <td>20170627T092449Z</td>
+      <td>Tormentas dispersas</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>21.87982</td>
+      <td>96</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5952983359954a0adbf7ab0a</td>
+      <td>MXAS0170</td>
+      <td>20170627T140000Z</td>
+      <td>S</td>
+      <td>60</td>
+      <td>91</td>
+      <td>Asientos</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>-102.0893</td>
+      <td>Aguascalientes</td>
+      <td>20170627T092453Z</td>
+      <td>Tormentas dispersas</td>
+      <td>AGU</td>
+      <td>15</td>
+      <td>22.23832</td>
+      <td>96</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5952983359954a0adbf7ab0b</td>
+      <td>MXAS0171</td>
+      <td>20170627T140000Z</td>
+      <td>E</td>
+      <td>60</td>
+      <td>84</td>
+      <td>Calvillo</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>-102.7188</td>
+      <td>Aguascalientes</td>
+      <td>20170627T092453Z</td>
+      <td>Tormentas dispersas</td>
+      <td>AGU</td>
+      <td>19</td>
+      <td>21.84691</td>
+      <td>96</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5952983359954a0adbf7ab0c</td>
+      <td>MXAS0172</td>
+      <td>20170627T140000Z</td>
+      <td>S</td>
+      <td>50</td>
+      <td>83</td>
+      <td>Cosío</td>
+      <td>2017-06-27T17:36:43.088Z</td>
+      <td>-102.3000</td>
+      <td>Aguascalientes</td>
+      <td>20170627T092453Z</td>
+      <td>Tormentas dispersas</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>22.36641</td>
+      <td>96</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5952983359954a0adbf7ab0d</td>
+      <td>MXAS0173</td>
+      <td>20170627T140000Z</td>
+      <td>SSO</td>
+      <td>50</td>
+      <td>84</td>
+      <td>El Llano</td>
+      <td>2017-06-27T17:36:43.089Z</td>
+      <td>-101.9653</td>
+      <td>Aguascalientes</td>
+      <td>20170627T092453Z</td>
+      <td>Tormentas dispersas</td>
+      <td>AGU</td>
+      <td>17</td>
+      <td>21.91887</td>
+      <td>96</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;"><b>Fuente: </b>GobMX, Metadata disponible para todo público. [Conjunto de datos]. Versión de enero de 2019.<br><b>URL: </b><a>hhttps://datos.gob.mx/</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;_id&#39;, &#39;cityid&#39;, &#39;validdateutc&#39;, &#39;winddirectioncardinal&#39;,
+       &#39;probabilityofprecip&#39;, &#39;relativehumidity&#39;, &#39;name&#39;, &#39;date-insert&#39;,
+       &#39;longitude&#39;, &#39;state&#39;, &#39;lastreporttime&#39;, &#39;skydescriptionlong&#39;,
+       &#39;stateabbr&#39;, &#39;tempc&#39;, &#39;latitude&#39;, &#39;iconcode&#39;, &#39;windspeedkm&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="2084">Loading BokehJS ...</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="8d004679-4977-4b40-9d18-a749a4bdbde1"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#8d004679-4977-4b40-9d18-a749a4bdbde1');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("2084");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };var element = document.getElementById("2084");
+  if (element == null) {
+    console.error("Bokeh: ERROR: autoload.js configured with elementid '2084' but no matching script tag was found. ")
+    return false;
+  }
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.4.0.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("2084")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># widget</span>
+<span class="n">drop_down</span> <span class="o">=</span> <span class="n">ipywidgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">,</span><span class="s1">&#39;Asientos&#39;</span><span class="p">,</span><span class="s1">&#39;Cosío&#39;</span><span class="p">,</span><span class="s1">&#39;Calvillo&#39;</span><span class="p">,</span><span class="s1">&#39;El Llano&#39;</span><span class="p">],</span>
+                                <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">,</span>
+                                <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ciudad:&#39;</span><span class="p">,</span>
+                                <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># data</span>
+<span class="n">x_bar_data_ipyw</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Probabilidad Precipitación&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperatura&#39;</span><span class="p">,</span> <span class="s1">&#39;Humedad&#39;</span><span class="p">,</span> <span class="s1">&#39;Velocidad Viento&#39;</span><span class="p">]</span>
+<span class="n">y_bar_data_ipyw</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                   <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                   <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                   <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    
+<span class="c1"># figure and plot</span>
+<span class="n">bar_chart_interactive</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">x_bar_data_ipyw</span><span class="p">,</span>
+                                <span class="n">plot_height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> 
+                                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Registro Atmosférico por ciudad&#39;</span>
+                                <span class="c1">#tooltips=tooltips</span>
+                              <span class="p">)</span>
+
+<span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">background_fill_color</span> <span class="o">=</span> <span class="s2">&quot;#FCF2FF&quot;</span>
+<span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">background_fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">border_fill_color</span> <span class="o">=</span> <span class="s2">&quot;whitesmoke&quot;</span>
+<span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">min_border_left</span> <span class="o">=</span> <span class="mi">80</span>
+
+
+<span class="c1">#tooltips = [</span>
+<span class="c1">#            (&#39;Probabilidad Precipitación&#39;,&#39;@probabilityofprecip&#39;),</span>
+<span class="c1">#            (&#39;Temperatura&#39;, &#39;@tempc&#39;),</span>
+<span class="c1">#            (&#39;Humedad&#39;, &#39;@relativehumidity&#39;),</span>
+<span class="c1">#            (&#39;Velocidad Viento&#39;,&#39;@windspeedkm&#39;),</span>
+<span class="c1">#           ]</span>
+
+<span class="c1"># Formatear la salida</span>
+<span class="n">bar_ipyw</span> <span class="o">=</span> <span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x_bar_data_ipyw</span><span class="p">,</span> 
+                                      <span class="n">top</span><span class="o">=</span><span class="n">y_bar_data_ipyw</span><span class="p">,</span>
+                                      <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#CAB2D6&#39;</span><span class="p">,</span>
+                                      <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+
+<span class="n">bar_chart_interactive</span><span class="o">.</span><span class="n">y_range</span><span class="o">=</span><span class="n">Range1d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1">#bar_chart_interactive.add_tools(HoverTool(tooltips=tooltips))</span>
+
+<span class="c1"># function - bar chart</span>
+<span class="k">def</span> <span class="nf">df1</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Aguascalientes&#39;</span><span class="p">:</span> 
+        <span class="n">bar_ipyw</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Aguascalientes&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Asientos&#39;</span><span class="p">:</span>
+        <span class="n">bar_ipyw</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Asientos&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Asientos&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Asientos&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Asientos&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Cosío&#39;</span><span class="p">:</span> 
+        <span class="n">bar_ipyw</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Cosío&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Cosío&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Cosío&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Cosío&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Calvillo&#39;</span><span class="p">:</span> 
+        <span class="n">bar_ipyw</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Calvillo&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Calvillo&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Calvillo&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Calvillo&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;El Llano&#39;</span><span class="p">:</span> 
+        <span class="n">bar_ipyw</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;El Llano&#39;</span><span class="p">][</span><span class="s1">&#39;probabilityofprecip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;El Llano&#39;</span><span class="p">][</span><span class="s1">&#39;tempc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;El Llano&#39;</span><span class="p">][</span><span class="s1">&#39;relativehumidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+                                            <span class="n">sw</span><span class="p">[</span><span class="n">sw</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;El Llano&#39;</span><span class="p">][</span><span class="s1">&#39;windspeedkm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+    <span class="n">push_notebook</span><span class="p">()</span>
+    
+<span class="n">show</span><span class="p">(</span><span class="n">bar_chart_interactive</span><span class="p">,</span> <span class="n">notebook_handle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+<span class="c1"># interaction</span>
+<span class="n">ipywidgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">drop_down</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="dfc9a13e-c63c-4f12-b6ee-290e5997ccef" data-root-id="2085"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="c2b83cf4-15f1-4307-841e-6510bc4a344e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c2b83cf4-15f1-4307-841e-6510bc4a344e');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"333c32aa-7ce9-4135-90f7-cc4471573c7b":{"roots":{"references":[{"attributes":{"background_fill_alpha":{"value":0.5},"background_fill_color":{"value":"#FCF2FF"},"below":[{"id":"2096","type":"CategoricalAxis"}],"border_fill_color":{"value":"whitesmoke"},"center":[{"id":"2099","type":"Grid"},{"id":"2104","type":"Grid"}],"left":[{"id":"2100","type":"LinearAxis"}],"min_border_left":80,"renderers":[{"id":"2121","type":"GlyphRenderer"}],"title":{"id":"2086","type":"Title"},"toolbar":{"id":"2111","type":"Toolbar"},"x_range":{"id":"2088","type":"FactorRange"},"x_scale":{"id":"2092","type":"CategoricalScale"},"y_range":{"id":"2123","type":"Range1d"},"y_scale":{"id":"2094","type":"LinearScale"}},"id":"2085","subtype":"Figure","type":"Plot"},{"attributes":{"source":{"id":"2118","type":"ColumnDataSource"}},"id":"2122","type":"CDSView"},{"attributes":{"data_source":{"id":"2118","type":"ColumnDataSource"},"glyph":{"id":"2119","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"2120","type":"VBar"},"selection_glyph":null,"view":{"id":"2122","type":"CDSView"}},"id":"2121","type":"GlyphRenderer"},{"attributes":{},"id":"2105","type":"PanTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0.5},"x":{"field":"x"}},"id":"2120","type":"VBar"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"2105","type":"PanTool"},{"id":"2106","type":"WheelZoomTool"},{"id":"2107","type":"BoxZoomTool"},{"id":"2108","type":"SaveTool"},{"id":"2109","type":"ResetTool"},{"id":"2110","type":"HelpTool"}]},"id":"2111","type":"Toolbar"},{"attributes":{"dimension":1,"ticker":{"id":"2101","type":"BasicTicker"}},"id":"2104","type":"Grid"},{"attributes":{"ticker":{"id":"2097","type":"CategoricalTicker"}},"id":"2099","type":"Grid"},{"attributes":{},"id":"2092","type":"CategoricalScale"},{"attributes":{},"id":"2108","type":"SaveTool"},{"attributes":{"formatter":{"id":"2165","type":"BasicTickFormatter"},"ticker":{"id":"2101","type":"BasicTicker"}},"id":"2100","type":"LinearAxis"},{"attributes":{"overlay":{"id":"2167","type":"BoxAnnotation"}},"id":"2107","type":"BoxZoomTool"},{"attributes":{},"id":"2169","type":"UnionRenderers"},{"attributes":{"formatter":{"id":"2163","type":"CategoricalTickFormatter"},"ticker":{"id":"2097","type":"CategoricalTicker"}},"id":"2096","type":"CategoricalAxis"},{"attributes":{"callback":null,"factors":["Probabilidad Precipitaci\u00f3n","Temperatura","Humedad","Velocidad Viento"]},"id":"2088","type":"FactorRange"},{"attributes":{},"id":"2106","type":"WheelZoomTool"},{"attributes":{},"id":"2094","type":"LinearScale"},{"attributes":{"fill_color":{"value":"#CAB2D6"},"line_color":{"value":"#CAB2D6"},"top":{"field":"top"},"width":{"value":0.5},"x":{"field":"x"}},"id":"2119","type":"VBar"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"2167","type":"BoxAnnotation"},{"attributes":{},"id":"2163","type":"CategoricalTickFormatter"},{"attributes":{},"id":"2110","type":"HelpTool"},{"attributes":{"callback":null,"data":{"top":[40.0,17.0,90.0,6.0],"x":["Probabilidad Precipitaci\u00f3n","Temperatura","Humedad","Velocidad Viento"]},"selected":{"id":"2168","type":"Selection"},"selection_policy":{"id":"2169","type":"UnionRenderers"}},"id":"2118","type":"ColumnDataSource"},{"attributes":{"text":"Registro Atmosf\u00e9rico por ciudad"},"id":"2086","type":"Title"},{"attributes":{},"id":"2165","type":"BasicTickFormatter"},{"attributes":{},"id":"2101","type":"BasicTicker"},{"attributes":{},"id":"2109","type":"ResetTool"},{"attributes":{"callback":null,"end":100},"id":"2123","type":"Range1d"},{"attributes":{},"id":"2097","type":"CategoricalTicker"},{"attributes":{},"id":"2168","type":"Selection"}],"root_ids":["2085"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"333c32aa-7ce9-4135-90f7-cc4471573c7b","notebook_comms_target":"2170","roots":{"2085":"dfc9a13e-c63c-4f12-b6ee-290e5997ccef"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d16d5165-8e0b-4fb7-b6af-29b6a0ac5852"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d16d5165-8e0b-4fb7-b6af-29b6a0ac5852');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0e10df2ebb7640d9b10d4769380d478e", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;function __main__.df1(name)&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:bokeh.server.views.ws:Failed sending message as connection was closed
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1>Bokeh Server</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.server.server</span> <span class="kn">import</span> <span class="n">Server</span>
+<span class="kn">from</span> <span class="nn">bokeh.application</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">bokeh.application.handlers.function</span> <span class="kn">import</span> <span class="n">FunctionHandler</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">ColumnDataSource</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">make_document</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="p">[]})</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">():</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()],</span>
+               <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()],</span>
+               <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">])]}</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+
+    <span class="n">doc</span><span class="o">.</span><span class="n">add_periodic_callback</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Streaming Circle Plot!&#39;</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">&#39;scale_width&#39;</span><span class="p">,</span>
+                 <span class="n">x_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">doc</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Now with live updating!&quot;</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="n">apps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;/&#39;</span><span class="p">:</span> <span class="n">Application</span><span class="p">(</span><span class="n">FunctionHandler</span><span class="p">(</span><span class="n">make_document</span><span class="p">))}</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5001</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-29-781c28b45f2c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     19</span>     doc<span class="ansi-blue-fg">.</span>add_root<span class="ansi-blue-fg">(</span>fig<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     20</span> 
+<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg"> </span>apps <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">:</span> Application<span class="ansi-blue-fg">(</span>FunctionHandler<span class="ansi-blue-fg">(</span>make_document<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">}</span>
+<span class="ansi-green-intense-fg ansi-bold">     22</span> 
+<span class="ansi-green-intense-fg ansi-bold">     23</span> server <span class="ansi-blue-fg">=</span> Server<span class="ansi-blue-fg">(</span>apps<span class="ansi-blue-fg">,</span> port<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5001</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;Application&#39; is not defined</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models.widgets</span> <span class="kn">import</span> <span class="n">Div</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;div.html&quot;</span><span class="p">)</span>
+
+<span class="n">div</span> <span class="o">=</span> <span class="n">Div</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Your &lt;a href=&quot;https://en.wikipedia.org/wiki/HTML&quot;&gt;HTML&lt;/a&gt;-supported text is initialized with the &lt;b&gt;text&lt;/b&gt; argument.  The</span>
+<span class="s2">remaining div arguments are &lt;b&gt;width&lt;/b&gt; and &lt;b&gt;height&lt;/b&gt;. For this example, those values</span>
+<span class="s2">are &lt;i&gt;200&lt;/i&gt; and &lt;i&gt;100&lt;/i&gt; respectively.&quot;&quot;&quot;</span><span class="p">,</span>
+<span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">div</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="33cd9792-9acf-435c-9b6b-557fb0f596df" data-root-id="15092"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="9fe1d6a6-10d0-4c92-8d8c-aa01d127b66c"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#9fe1d6a6-10d0-4c92-8d8c-aa01d127b66c');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"5227fb0e-aa63-4354-b78d-f56069d7a19e":{"roots":{"references":[{"attributes":{"height":100,"text":"Your <a href=\"https://en.wikipedia.org/wiki/HTML\">HTML</a>-supported text is initialized with the <b>text</b> argument.  The\nremaining div arguments are <b>width</b> and <b>height</b>. For this example, those values\nare <i>200</i> and <i>100</i> respectively.","width":200},"id":"15092","type":"Div"}],"root_ids":["15092"]},"title":"Bokeh Application","version":"1.4.0"}};
+  var render_items = [{"docid":"5227fb0e-aa63-4354-b78d-f56069d7a19e","roots":{"15092":"33cd9792-9acf-435c-9b6b-557fb0f596df"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

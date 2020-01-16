@@ -1,0 +1,1156 @@
+---
+redirect_from:
+  - "/features/bokeh"
+interact_link: content/features/Bokeh.ipynb
+kernel_name: python2
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Bokeh
+pagenum: 3
+prev_page:
+  url: /features/Seaborn.html
+next_page:
+  url: /features/Widgets_Bokeh.html
+suffix: .ipynb
+search: de p style text align h la es y datos web utpl institucional una que grficos en archivo espaola comunidad centergrfico img src www edu ec manualimagen images color jpg width pxheight px center uso librera bokeh justifybokeh biblioteca visualizacin interactiva python se dirige los navegadores modernos para presentacin su objetivo proporcionar construccin elegante concisa novedosos al estilo d js extender esta capacidad con interactividad alto rendimiento conjuntos muy grandes o transmisin por secuencias brbokeh puede ayudar cualquier persona desee crear forma rpida sencilla interactivos paneles control aplicaciones justifylectura justifyel presente documento hace referencia estadstica general bibliografa lnea justifybfuente barchivo
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Bokeh</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.utpl.edu.ec/manual_imagen/images/institucional/UTPL-INSTITUCIONAL-color.jpg" style = "width:510px;height:180px"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1 style="text-align: center;"> Uso Librería Bokeh </H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Bokeh es una biblioteca de visualización interactiva de Python que se dirige a los navegadores web modernos para la presentación. Su objetivo es proporcionar una construcción elegante y concisa de gráficos novedosos al estilo de D3.js, y extender esta capacidad con interactividad de alto rendimiento en conjuntos de datos muy grandes o de transmisión por secuencias.<br>Bokeh puede ayudar a cualquier persona que desee crear de forma rápida y sencilla gráficos interactivos, paneles de control y aplicaciones de datos.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">push_notebook</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.resources</span> <span class="kn">import</span> <span class="n">INLINE</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral6</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<div class="bk-root">
+    <a href="https://bokeh.pydata.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1001">Loading BokehJS ...</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="ba3d305e-c440-42bf-b2ce-b860cf586eba"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#ba3d305e-c440-42bf-b2ce-b860cf586eba');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1001");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };var element = document.getElementById("1001");
+  if (element == null) {
+    console.error("Bokeh: ERROR: autoload.js configured with elementid '1001' but no matching script tag was found. ")
+    return false;
+  }
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.3.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.3.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.3.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.3.0.min.js"];
+  var css_urls = [];
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    
+    function(Bokeh) {
+      
+    },
+    function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1001")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Lectura Archivo</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;DATA/biblio.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">El presente documento hace referencia a la estadística general de la Bibliografía Española en Línea</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cartografia</th>
+      <th>Monografias</th>
+      <th>Musica_impresa</th>
+      <th>Periodo</th>
+      <th>Pub_periodicas</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>2006</td>
+      <td>2.421</td>
+      <td>2.421</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.426</td>
+      <td>61.105</td>
+      <td>3.377</td>
+      <td>2007</td>
+      <td>1.803</td>
+      <td>67.711</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.273</td>
+      <td>68.232</td>
+      <td>3.222</td>
+      <td>2008</td>
+      <td>2.203</td>
+      <td>74.930</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.892</td>
+      <td>92.294</td>
+      <td>3.278</td>
+      <td>2009</td>
+      <td>2.301</td>
+      <td>99.765</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.965</td>
+      <td>86.400</td>
+      <td>3.403</td>
+      <td>2010</td>
+      <td>1.899</td>
+      <td>93.667</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;"><b>Fuente: </b>Archivo de la Web Española: Comunidad Autónoma de Aragón. [Conjunto de datos]. Versión de enero de 2019.<br><b>URL: </b><a>https://datos.gob.es/es/catalogo/e00123904-archivo-de-la-web-espanola-comunidad-autonoma-de-aragon</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([u&#39;Cartografia&#39;, u&#39;Monografias&#39;, u&#39;Musica_impresa&#39;, u&#39;Periodo&#39;,
+       u&#39;Pub_periodicas&#39;, u&#39;Subtotal&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Creación de figura</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[u&#39;Pub_periodicas&#39;,
+ u&#39;Periodo&#39;,
+ u&#39;Monografias&#39;,
+ u&#39;Musica_impresa&#39;,
+ u&#39;Cartografia&#39;,
+ u&#39;Subtotal&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H2 style="text-align: center;">Gráfico de Barras</H2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Subtotal&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Seguimiento de Bibliografía Nacional&quot;</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#B3DE99&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;#B3DE69&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="868af153-857e-4756-ab66-eaab940b796d" data-root-id="1002"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="34617ea8-c614-479f-a67c-2bed17fce911"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#34617ea8-c614-479f-a67c-2bed17fce911');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"3ca17a8f-f952-4f31-9f83-064b7a69016a":{"roots":{"references":[{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1038","type":"VBar"},{"attributes":{"data_source":{"id":"1036","type":"ColumnDataSource"},"glyph":{"id":"1037","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1038","type":"VBar"},"selection_glyph":null,"view":{"id":"1040","type":"CDSView"}},"id":"1039","type":"GlyphRenderer"},{"attributes":{"formatter":{"id":"1045","type":"BasicTickFormatter"},"ticker":{"id":"1019","type":"BasicTicker"}},"id":"1018","type":"LinearAxis"},{"attributes":{},"id":"1019","type":"BasicTicker"},{"attributes":{},"id":"1014","type":"BasicTicker"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1014","type":"BasicTicker"}},"id":"1017","type":"Grid"},{"attributes":{"callback":null,"data":{"top":[2.421,67.711,74.93,99.765,93.667,71.855,74.123,62.63,58.826,58.967,48.625,35.948,6.074],"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]},"selected":{"id":"1046","type":"Selection"},"selection_policy":{"id":"1047","type":"UnionRenderers"}},"id":"1036","type":"ColumnDataSource"},{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"formatter":{"id":"1043","type":"BasicTickFormatter"},"ticker":{"id":"1014","type":"BasicTicker"}},"id":"1013","type":"LinearAxis"},{"attributes":{},"id":"1043","type":"BasicTickFormatter"},{"attributes":{},"id":"1026","type":"SaveTool"},{"attributes":{"overlay":{"id":"1048","type":"BoxAnnotation"}},"id":"1025","type":"BoxZoomTool"},{"attributes":{},"id":"1024","type":"WheelZoomTool"},{"attributes":{},"id":"1027","type":"ResetTool"},{"attributes":{"source":{"id":"1036","type":"ColumnDataSource"}},"id":"1040","type":"CDSView"},{"attributes":{},"id":"1047","type":"UnionRenderers"},{"attributes":{},"id":"1046","type":"Selection"},{"attributes":{},"id":"1045","type":"BasicTickFormatter"},{"attributes":{"dimension":1,"ticker":{"id":"1019","type":"BasicTicker"}},"id":"1022","type":"Grid"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1048","type":"BoxAnnotation"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1023","type":"PanTool"},{"id":"1024","type":"WheelZoomTool"},{"id":"1025","type":"BoxZoomTool"},{"id":"1026","type":"SaveTool"},{"id":"1027","type":"ResetTool"},{"id":"1028","type":"HelpTool"}]},"id":"1029","type":"Toolbar"},{"attributes":{},"id":"1028","type":"HelpTool"},{"attributes":{"fill_color":{"value":"#B3DE99"},"line_color":{"value":"#B3DE99"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1037","type":"VBar"},{"attributes":{},"id":"1023","type":"PanTool"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{"callback":null},"id":"1007","type":"DataRange1d"},{"attributes":{"callback":null},"id":"1005","type":"DataRange1d"},{"attributes":{"text":"Seguimiento de Bibliograf\u00eda Nacional"},"id":"1003","type":"Title"},{"attributes":{"below":[{"id":"1013","type":"LinearAxis"}],"center":[{"id":"1017","type":"Grid"},{"id":"1022","type":"Grid"}],"left":[{"id":"1018","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"#B3DE69"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1039","type":"GlyphRenderer"}],"title":{"id":"1003","type":"Title"},"toolbar":{"id":"1029","type":"Toolbar"},"x_range":{"id":"1005","type":"DataRange1d"},"x_scale":{"id":"1009","type":"LinearScale"},"y_range":{"id":"1007","type":"DataRange1d"},"y_scale":{"id":"1011","type":"LinearScale"}},"id":"1002","subtype":"Figure","type":"Plot"}],"root_ids":["1002"]},"title":"Bokeh Application","version":"1.3.0"}};
+  var render_items = [{"docid":"3ca17a8f-f952-4f31-9f83-064b7a69016a","roots":{"1002":"868af153-857e-4756-ab66-eaab940b796d"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Pub_periodicas&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Publicacines Periódicos Bibliografía Nacional&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#CFA7A7&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Publicaciones Periodicas&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;#CFA7A7&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="d52ded7b-3c99-4a98-87b7-42c9c54db41d" data-root-id="1097"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="b7033327-811a-409c-b172-81daad8acdc1"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#b7033327-811a-409c-b172-81daad8acdc1');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"71a452d8-8d81-4209-a1b0-32acd156f2f5":{"roots":{"references":[{"attributes":{},"id":"1146","type":"BasicTickFormatter"},{"attributes":{"overlay":{"id":"1151","type":"BoxAnnotation"}},"id":"1120","type":"BoxZoomTool"},{"attributes":{},"id":"1121","type":"SaveTool"},{"attributes":{},"id":"1122","type":"ResetTool"},{"attributes":{},"id":"1123","type":"HelpTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1118","type":"PanTool"},{"id":"1119","type":"WheelZoomTool"},{"id":"1120","type":"BoxZoomTool"},{"id":"1121","type":"SaveTool"},{"id":"1122","type":"ResetTool"},{"id":"1123","type":"HelpTool"}]},"id":"1124","type":"Toolbar"},{"attributes":{},"id":"1106","type":"LinearScale"},{"attributes":{"axis_label":"Publicaciones Periodicas","formatter":{"id":"1148","type":"BasicTickFormatter"},"ticker":{"id":"1114","type":"BasicTicker"}},"id":"1113","type":"LinearAxis"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1109","type":"BasicTicker"}},"id":"1112","type":"Grid"},{"attributes":{},"id":"1114","type":"BasicTicker"},{"attributes":{"dimension":1,"ticker":{"id":"1114","type":"BasicTicker"}},"id":"1117","type":"Grid"},{"attributes":{"fill_color":{"value":"#CFA7A7"},"line_color":{"value":"#CFA7A7"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1132","type":"VBar"},{"attributes":{},"id":"1119","type":"WheelZoomTool"},{"attributes":{},"id":"1118","type":"PanTool"},{"attributes":{},"id":"1148","type":"BasicTickFormatter"},{"attributes":{"below":[{"id":"1108","type":"LinearAxis"}],"center":[{"id":"1112","type":"Grid"},{"id":"1117","type":"Grid"}],"left":[{"id":"1113","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"#CFA7A7"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1134","type":"GlyphRenderer"}],"title":{"id":"1098","type":"Title"},"toolbar":{"id":"1124","type":"Toolbar"},"x_range":{"id":"1100","type":"DataRange1d"},"x_scale":{"id":"1104","type":"LinearScale"},"y_range":{"id":"1102","type":"DataRange1d"},"y_scale":{"id":"1106","type":"LinearScale"}},"id":"1097","subtype":"Figure","type":"Plot"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0.9},"x":{"field":"x"}},"id":"1133","type":"VBar"},{"attributes":{"text":"Publicacines Peri\u00f3dicos Bibliograf\u00eda Nacional"},"id":"1098","type":"Title"},{"attributes":{"callback":null,"data":{"top":[2.421,1.803,2.203,2.301,1.899,1.222,894.0,1.151,1.009,690.0,928.0,863.0,1.02],"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]},"selected":{"id":"1149","type":"Selection"},"selection_policy":{"id":"1150","type":"UnionRenderers"}},"id":"1131","type":"ColumnDataSource"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1151","type":"BoxAnnotation"},{"attributes":{},"id":"1150","type":"UnionRenderers"},{"attributes":{"source":{"id":"1131","type":"ColumnDataSource"}},"id":"1135","type":"CDSView"},{"attributes":{"data_source":{"id":"1131","type":"ColumnDataSource"},"glyph":{"id":"1132","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1133","type":"VBar"},"selection_glyph":null,"view":{"id":"1135","type":"CDSView"}},"id":"1134","type":"GlyphRenderer"},{"attributes":{},"id":"1149","type":"Selection"},{"attributes":{},"id":"1104","type":"LinearScale"},{"attributes":{"callback":null},"id":"1102","type":"DataRange1d"},{"attributes":{"callback":null},"id":"1100","type":"DataRange1d"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"1146","type":"BasicTickFormatter"},"ticker":{"id":"1109","type":"BasicTicker"}},"id":"1108","type":"LinearAxis"},{"attributes":{},"id":"1109","type":"BasicTicker"}],"root_ids":["1097"]},"title":"Bokeh Application","version":"1.3.0"}};
+  var render_items = [{"docid":"71a452d8-8d81-4209-a1b0-32acd156f2f5","roots":{"1097":"d52ded7b-3c99-4a98-87b7-42c9c54db41d"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H2 style="text-align: center;">Gráfico de Lineas</H2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Cartografia&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Cartografia de la Bibliografia Nacional&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yb</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Cartografia&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="f0473774-1fec-43fb-a9c1-255f5c6a6dae" data-root-id="1200"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="93ac8a3f-23b5-4cf2-bf78-26a43dbc1ba5"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#93ac8a3f-23b5-4cf2-bf78-26a43dbc1ba5');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"17f1254b-a85f-4d6e-b88d-c8e4fa3c80d4":{"roots":{"references":[{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1221","type":"PanTool"},{"id":"1222","type":"WheelZoomTool"},{"id":"1223","type":"BoxZoomTool"},{"id":"1224","type":"SaveTool"},{"id":"1225","type":"ResetTool"},{"id":"1226","type":"HelpTool"}]},"id":"1227","type":"Toolbar"},{"attributes":{},"id":"1226","type":"HelpTool"},{"attributes":{},"id":"1225","type":"ResetTool"},{"attributes":{},"id":"1224","type":"SaveTool"},{"attributes":{"overlay":{"id":"1262","type":"BoxAnnotation"}},"id":"1223","type":"BoxZoomTool"},{"attributes":{},"id":"1222","type":"WheelZoomTool"},{"attributes":{},"id":"1221","type":"PanTool"},{"attributes":{"dimension":1,"ticker":{"id":"1217","type":"BasicTicker"}},"id":"1220","type":"Grid"},{"attributes":{"callback":null},"id":"1205","type":"DataRange1d"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1262","type":"BoxAnnotation"},{"attributes":{},"id":"1261","type":"UnionRenderers"},{"attributes":{},"id":"1260","type":"Selection"},{"attributes":{"text":"Cartografia de la Bibliografia Nacional"},"id":"1201","type":"Title"},{"attributes":{"below":[{"id":"1211","type":"LinearAxis"}],"center":[{"id":"1215","type":"Grid"},{"id":"1220","type":"Grid"}],"left":[{"id":"1216","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"blue"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1237","type":"GlyphRenderer"}],"title":{"id":"1201","type":"Title"},"toolbar":{"id":"1227","type":"Toolbar"},"x_range":{"id":"1203","type":"DataRange1d"},"x_scale":{"id":"1207","type":"LinearScale"},"y_range":{"id":"1205","type":"DataRange1d"},"y_scale":{"id":"1209","type":"LinearScale"}},"id":"1200","subtype":"Figure","type":"Plot"},{"attributes":{"callback":null},"id":"1203","type":"DataRange1d"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"1257","type":"BasicTickFormatter"},"ticker":{"id":"1212","type":"BasicTicker"}},"id":"1211","type":"LinearAxis"},{"attributes":{},"id":"1209","type":"LinearScale"},{"attributes":{},"id":"1257","type":"BasicTickFormatter"},{"attributes":{},"id":"1207","type":"LinearScale"},{"attributes":{},"id":"1259","type":"BasicTickFormatter"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,1.426,1.273,1.892,1.965,2.141,1.22,1.162,1.307,1.829,1.202,1.303,0.0]},"selected":{"id":"1260","type":"Selection"},"selection_policy":{"id":"1261","type":"UnionRenderers"}},"id":"1234","type":"ColumnDataSource"},{"attributes":{"line_color":"blue","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1235","type":"Line"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1236","type":"Line"},{"attributes":{"data_source":{"id":"1234","type":"ColumnDataSource"},"glyph":{"id":"1235","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1236","type":"Line"},"selection_glyph":null,"view":{"id":"1238","type":"CDSView"}},"id":"1237","type":"GlyphRenderer"},{"attributes":{"axis_label":"Cartografia","formatter":{"id":"1259","type":"BasicTickFormatter"},"ticker":{"id":"1217","type":"BasicTicker"}},"id":"1216","type":"LinearAxis"},{"attributes":{},"id":"1217","type":"BasicTicker"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1212","type":"BasicTicker"}},"id":"1215","type":"Grid"},{"attributes":{"source":{"id":"1234","type":"ColumnDataSource"}},"id":"1238","type":"CDSView"},{"attributes":{},"id":"1212","type":"BasicTicker"}],"root_ids":["1200"]},"title":"Bokeh Application","version":"1.3.0"}};
+  var render_items = [{"docid":"17f1254b-a85f-4d6e-b88d-c8e4fa3c80d4","roots":{"1200":"f0473774-1fec-43fb-a9c1-255f5c6a6dae"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Cartografia&#39;</span><span class="p">]</span>
+<span class="n">ya</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Musica_impresa&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Crecimiento Cartografia vs Musica Impresa de la Bibliografia Nacional&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yb</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span><span class="s2">&quot;Cartografia&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ya</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span><span class="s2">&quot;Musica&quot;</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Cartografia&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="d9e21399-5000-4dbd-8fd3-3765495ff25b" data-root-id="1466"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="18cf8d0a-548f-4ed4-af57-bc2526e3a41b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#18cf8d0a-548f-4ed4-af57-bc2526e3a41b');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"014878eb-8e80-467a-b284-5ff882f4ca87":{"roots":{"references":[{"attributes":{},"id":"1483","type":"BasicTicker"},{"attributes":{"axis_label":"Cartografia","formatter":{"id":"1509","type":"BasicTickFormatter"},"ticker":{"id":"1483","type":"BasicTicker"}},"id":"1482","type":"LinearAxis"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"1478","type":"BasicTicker"}},"id":"1481","type":"Grid"},{"attributes":{},"id":"1487","type":"PanTool"},{"attributes":{"dimension":1,"ticker":{"id":"1483","type":"BasicTicker"}},"id":"1486","type":"Grid"},{"attributes":{"overlay":{"id":"1510","type":"BoxAnnotation"}},"id":"1489","type":"BoxZoomTool"},{"attributes":{},"id":"1488","type":"WheelZoomTool"},{"attributes":{},"id":"1568","type":"Selection"},{"attributes":{},"id":"1569","type":"UnionRenderers"},{"attributes":{"label":{"value":"Musica"},"renderers":[{"id":"1516","type":"GlyphRenderer"}]},"id":"1526","type":"LegendItem"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1502","type":"Line"},{"attributes":{"data_source":{"id":"1500","type":"ColumnDataSource"},"glyph":{"id":"1501","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1502","type":"Line"},"selection_glyph":null,"view":{"id":"1504","type":"CDSView"}},"id":"1503","type":"GlyphRenderer"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,1.426,1.273,1.892,1.965,2.141,1.22,1.162,1.307,1.829,1.202,1.303,0.0]},"selected":{"id":"1523","type":"Selection"},"selection_policy":{"id":"1524","type":"UnionRenderers"}},"id":"1500","type":"ColumnDataSource"},{"attributes":{"line_color":"green","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1501","type":"Line"},{"attributes":{"callback":null},"id":"1469","type":"DataRange1d"},{"attributes":{},"id":"1507","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"1500","type":"ColumnDataSource"}},"id":"1504","type":"CDSView"},{"attributes":{},"id":"1523","type":"Selection"},{"attributes":{"text":"Crecimiento Cartografia vs Musica Impresa de la Bibliografia Nacional"},"id":"1467","type":"Title"},{"attributes":{"below":[{"id":"1477","type":"LinearAxis"}],"center":[{"id":"1481","type":"Grid"},{"id":"1486","type":"Grid"},{"id":"1511","type":"Legend"}],"left":[{"id":"1482","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"green"},"outline_line_width":{"value":7},"plot_height":350,"renderers":[{"id":"1503","type":"GlyphRenderer"},{"id":"1516","type":"GlyphRenderer"}],"title":{"id":"1467","type":"Title"},"toolbar":{"id":"1493","type":"Toolbar"},"x_range":{"id":"1469","type":"DataRange1d"},"x_scale":{"id":"1473","type":"LinearScale"},"y_range":{"id":"1471","type":"DataRange1d"},"y_scale":{"id":"1475","type":"LinearScale"}},"id":"1466","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1490","type":"SaveTool"},{"attributes":{},"id":"1491","type":"ResetTool"},{"attributes":{},"id":"1492","type":"HelpTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1487","type":"PanTool"},{"id":"1488","type":"WheelZoomTool"},{"id":"1489","type":"BoxZoomTool"},{"id":"1490","type":"SaveTool"},{"id":"1491","type":"ResetTool"},{"id":"1492","type":"HelpTool"}]},"id":"1493","type":"Toolbar"},{"attributes":{},"id":"1524","type":"UnionRenderers"},{"attributes":{"source":{"id":"1513","type":"ColumnDataSource"}},"id":"1517","type":"CDSView"},{"attributes":{},"id":"1509","type":"BasicTickFormatter"},{"attributes":{},"id":"1473","type":"LinearScale"},{"attributes":{"callback":null},"id":"1471","type":"DataRange1d"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"1507","type":"BasicTickFormatter"},"ticker":{"id":"1478","type":"BasicTicker"}},"id":"1477","type":"LinearAxis"},{"attributes":{},"id":"1475","type":"LinearScale"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1515","type":"Line"},{"attributes":{"line_color":"orange","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1514","type":"Line"},{"attributes":{},"id":"1478","type":"BasicTicker"},{"attributes":{"data_source":{"id":"1513","type":"ColumnDataSource"},"glyph":{"id":"1514","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1515","type":"Line"},"selection_glyph":null,"view":{"id":"1517","type":"CDSView"}},"id":"1516","type":"GlyphRenderer"},{"attributes":{"items":[{"id":"1512","type":"LegendItem"},{"id":"1526","type":"LegendItem"}]},"id":"1511","type":"Legend"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1510","type":"BoxAnnotation"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,3.377,3.222,3.278,3.403,3.467,3.431,3.122,3.549,0.0,0.0,0.0,0.0]},"selected":{"id":"1568","type":"Selection"},"selection_policy":{"id":"1569","type":"UnionRenderers"}},"id":"1513","type":"ColumnDataSource"},{"attributes":{"label":{"value":"Cartografia"},"renderers":[{"id":"1503","type":"GlyphRenderer"}]},"id":"1512","type":"LegendItem"}],"root_ids":["1466"]},"title":"Bokeh Application","version":"1.3.0"}};
+  var render_items = [{"docid":"014878eb-8e80-467a-b284-5ff882f4ca87","roots":{"1466":"d9e21399-5000-4dbd-8fd3-3765495ff25b"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Periodo&#39;</span><span class="p">]</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Cartografia&#39;</span><span class="p">]</span>
+<span class="n">ya</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Musica_impresa&#39;</span><span class="p">]</span>
+
+<span class="c1">#FIgura 1</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Crecimiento Cartografia de la Bibliografia Nacional&quot;</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yb</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#p1.line(x=xb, y=yb, color=&quot;navy&quot;, line_width=2)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Cartografia&#39;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;navy&quot;</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1">#Figura 2</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Crecimiento Monografia de la Bibliografia Nacional&quot;</span><span class="p">)</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ya</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;firebrick&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#p2.line(x=xb, y=ya, color=&quot;firebrick&quot;, line_width=2)</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Periodo&#39;</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Monografia&#39;</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">outline_line_width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">outline_line_alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;firebrick&quot;</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">band_hatch_scale</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]])</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+
+
+
+
+<div class="bk-root" id="551fe1c1-9091-4fab-9c06-d06859f63b5b" data-root-id="9438"></div>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+<div id="4d92e254-e7a2-46eb-854a-adda40912b37"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#4d92e254-e7a2-46eb-854a-adda40912b37');
+(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"58f38905-4bdf-48d3-a10a-f666ebdbcdff":{"roots":{"references":[{"attributes":{"text":"Crecimiento Cartografia de la Bibliografia Nacional"},"id":"9340","type":"Title"},{"attributes":{"callback":null},"id":"9342","type":"DataRange1d"},{"attributes":{"callback":null},"id":"9344","type":"DataRange1d"},{"attributes":{},"id":"9346","type":"LinearScale"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"9360","type":"PanTool"},{"id":"9361","type":"WheelZoomTool"},{"id":"9362","type":"BoxZoomTool"},{"id":"9363","type":"SaveTool"},{"id":"9364","type":"ResetTool"},{"id":"9365","type":"HelpTool"}]},"id":"9366","type":"Toolbar"},{"attributes":{},"id":"9364","type":"ResetTool"},{"attributes":{},"id":"9365","type":"HelpTool"},{"attributes":{"overlay":{"id":"9424","type":"BoxAnnotation"}},"id":"9362","type":"BoxZoomTool"},{"attributes":{},"id":"9363","type":"SaveTool"},{"attributes":{},"id":"9360","type":"PanTool"},{"attributes":{},"id":"9361","type":"WheelZoomTool"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,1.426,1.273,1.892,1.965,2.141,1.22,1.162,1.307,1.829,1.202,1.303,0.0]},"selected":{"id":"9422","type":"Selection"},"selection_policy":{"id":"9423","type":"UnionRenderers"}},"id":"9373","type":"ColumnDataSource"},{"attributes":{},"id":"9385","type":"LinearScale"},{"attributes":{},"id":"9348","type":"LinearScale"},{"attributes":{},"id":"9387","type":"LinearScale"},{"attributes":{"callback":null},"id":"9381","type":"DataRange1d"},{"attributes":{},"id":"9428","type":"BasicTickFormatter"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"9428","type":"BasicTickFormatter"},"ticker":{"id":"9390","type":"BasicTicker"}},"id":"9389","type":"LinearAxis"},{"attributes":{},"id":"9403","type":"ResetTool"},{"attributes":{},"id":"9402","type":"SaveTool"},{"attributes":{"overlay":{"id":"9433","type":"BoxAnnotation"}},"id":"9401","type":"BoxZoomTool"},{"attributes":{},"id":"9400","type":"WheelZoomTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"9399","type":"PanTool"},{"id":"9400","type":"WheelZoomTool"},{"id":"9401","type":"BoxZoomTool"},{"id":"9402","type":"SaveTool"},{"id":"9403","type":"ResetTool"},{"id":"9404","type":"HelpTool"}]},"id":"9405","type":"Toolbar"},{"attributes":{},"id":"9404","type":"HelpTool"},{"attributes":{},"id":"9421","type":"BasicTickFormatter"},{"attributes":{},"id":"9423","type":"UnionRenderers"},{"attributes":{},"id":"9422","type":"Selection"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"9424","type":"BoxAnnotation"},{"attributes":{"text":"Crecimiento Monografia de la Bibliografia Nacional"},"id":"9379","type":"Title"},{"attributes":{"below":[{"id":"9389","type":"LinearAxis"}],"center":[{"id":"9393","type":"Grid"},{"id":"9398","type":"Grid"}],"left":[{"id":"9394","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"firebrick"},"outline_line_width":{"value":7},"plot_height":250,"plot_width":450,"renderers":[{"id":"9415","type":"GlyphRenderer"}],"title":{"id":"9379","type":"Title"},"toolbar":{"id":"9405","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"9381","type":"DataRange1d"},"x_scale":{"id":"9385","type":"LinearScale"},"y_range":{"id":"9383","type":"DataRange1d"},"y_scale":{"id":"9387","type":"LinearScale"}},"id":"9378","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"9351","type":"BasicTicker"},{"attributes":{"axis_label":"Periodo","formatter":{"id":"9419","type":"BasicTickFormatter"},"ticker":{"id":"9351","type":"BasicTicker"}},"id":"9350","type":"LinearAxis"},{"attributes":{},"id":"9356","type":"BasicTicker"},{"attributes":{"axis_label":"Cartografia","formatter":{"id":"9421","type":"BasicTickFormatter"},"ticker":{"id":"9356","type":"BasicTicker"}},"id":"9355","type":"LinearAxis"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"9351","type":"BasicTicker"}},"id":"9354","type":"Grid"},{"attributes":{"below":[{"id":"9350","type":"LinearAxis"}],"center":[{"id":"9354","type":"Grid"},{"id":"9359","type":"Grid"}],"left":[{"id":"9355","type":"LinearAxis"}],"outline_line_alpha":{"value":0.3},"outline_line_color":{"value":"navy"},"outline_line_width":{"value":7},"plot_height":250,"plot_width":450,"renderers":[{"id":"9376","type":"GlyphRenderer"}],"title":{"id":"9340","type":"Title"},"toolbar":{"id":"9366","type":"Toolbar"},"toolbar_location":null,"x_range":{"id":"9342","type":"DataRange1d"},"x_scale":{"id":"9346","type":"LinearScale"},"y_range":{"id":"9344","type":"DataRange1d"},"y_scale":{"id":"9348","type":"LinearScale"}},"id":"9339","subtype":"Figure","type":"Plot"},{"attributes":{"dimension":1,"ticker":{"id":"9356","type":"BasicTicker"}},"id":"9359","type":"Grid"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":2},"x":{"field":"x"},"y":{"field":"y"}},"id":"9375","type":"Square"},{"attributes":{"fill_color":{"value":"navy"},"line_color":{"value":"navy"},"line_width":{"value":2},"x":{"field":"x"},"y":{"field":"y"}},"id":"9374","type":"Square"},{"attributes":{"source":{"id":"9373","type":"ColumnDataSource"}},"id":"9377","type":"CDSView"},{"attributes":{"data_source":{"id":"9373","type":"ColumnDataSource"},"glyph":{"id":"9374","type":"Square"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9375","type":"Square"},"selection_glyph":null,"view":{"id":"9377","type":"CDSView"}},"id":"9376","type":"GlyphRenderer"},{"attributes":{"toolbar":{"id":"9436","type":"ProxyToolbar"},"toolbar_location":"above"},"id":"9437","type":"ToolbarBox"},{"attributes":{"source":{"id":"9412","type":"ColumnDataSource"}},"id":"9416","type":"CDSView"},{"attributes":{},"id":"9395","type":"BasicTicker"},{"attributes":{"axis_label":"Monografia","formatter":{"id":"9430","type":"BasicTickFormatter"},"ticker":{"id":"9395","type":"BasicTicker"}},"id":"9394","type":"LinearAxis"},{"attributes":{"band_hatch_scale":10,"ticker":{"id":"9390","type":"BasicTicker"}},"id":"9393","type":"Grid"},{"attributes":{},"id":"9390","type":"BasicTicker"},{"attributes":{"callback":null},"id":"9383","type":"DataRange1d"},{"attributes":{},"id":"9399","type":"PanTool"},{"attributes":{"dimension":1,"ticker":{"id":"9395","type":"BasicTicker"}},"id":"9398","type":"Grid"},{"attributes":{"callback":null,"data":{"x":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],"y":[0.0,3.377,3.222,3.278,3.403,3.467,3.431,3.122,3.549,0.0,0.0,0.0,0.0]},"selected":{"id":"9431","type":"Selection"},"selection_policy":{"id":"9432","type":"UnionRenderers"}},"id":"9412","type":"ColumnDataSource"},{"attributes":{"fill_color":{"value":"firebrick"},"line_color":{"value":"firebrick"},"line_width":{"value":2},"x":{"field":"x"},"y":{"field":"y"}},"id":"9413","type":"Triangle"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":2},"x":{"field":"x"},"y":{"field":"y"}},"id":"9414","type":"Triangle"},{"attributes":{"data_source":{"id":"9412","type":"ColumnDataSource"},"glyph":{"id":"9413","type":"Triangle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9414","type":"Triangle"},"selection_glyph":null,"view":{"id":"9416","type":"CDSView"}},"id":"9415","type":"GlyphRenderer"},{"attributes":{"children":[{"id":"9437","type":"ToolbarBox"},{"id":"9435","type":"GridBox"}]},"id":"9438","type":"Column"},{"attributes":{"tools":[{"id":"9360","type":"PanTool"},{"id":"9361","type":"WheelZoomTool"},{"id":"9362","type":"BoxZoomTool"},{"id":"9363","type":"SaveTool"},{"id":"9364","type":"ResetTool"},{"id":"9365","type":"HelpTool"},{"id":"9399","type":"PanTool"},{"id":"9400","type":"WheelZoomTool"},{"id":"9401","type":"BoxZoomTool"},{"id":"9402","type":"SaveTool"},{"id":"9403","type":"ResetTool"},{"id":"9404","type":"HelpTool"}]},"id":"9436","type":"ProxyToolbar"},{"attributes":{},"id":"9419","type":"BasicTickFormatter"},{"attributes":{"children":[[{"id":"9339","subtype":"Figure","type":"Plot"},0,0],[{"id":"9378","subtype":"Figure","type":"Plot"},0,1]]},"id":"9435","type":"GridBox"},{"attributes":{},"id":"9432","type":"UnionRenderers"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"9433","type":"BoxAnnotation"},{"attributes":{},"id":"9430","type":"BasicTickFormatter"},{"attributes":{},"id":"9431","type":"Selection"}],"root_ids":["9438"]},"title":"Bokeh Application","version":"1.3.0"}};
+  var render_items = [{"docid":"58f38905-4bdf-48d3-a10a-f666ebdbcdff","roots":{"9438":"551fe1c1-9091-4fab-9c06-d06859f63b5b"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
