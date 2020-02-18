@@ -1,0 +1,769 @@
+---
+redirect_from:
+  - "/features/plotly-wdg"
+interact_link: content/features/plotly_wdg.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Plotly Widgets
+pagenum: 5
+prev_page:
+  url: /features/Widgets_Bokeh.html
+next_page:
+  url: 
+suffix: .ipynb
+search: p de style text align en los que la el h y grfica este caso justifygeneracin usuario uso componentes datos plotly para las vuelos del campos img src utpl institucional widgets una forma son diferentes base hace siguientes justifypara generacin hacer libreras mongodb justifyconexin ao yankev githubusercontent com un slider meses checkbox ser si por fecha tanto como justifyse genera listas despegables mediante unicos formarn parte nuestra lista filtrado aereopuerto es con se valores e www edu ec manualimagen images color jpg width pxheight px centerplotly justifyplotly representa interactiva analizar obtenidos desde orgenes funciona librera visualizacin recursos su ejecucin leftgeneracin
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Plotly Widgets</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.utpl.edu.ec/manual_imagen/images/institucional/UTPL-INSTITUCIONAL-color.jpg" style = "width:510px;height:180px"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1 style="text-align: center;">Plotly Widgets</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Plotly widgets representa una forma interactiva de analizar datos que son obtenidos desde diferentes orígenes, funciona en base a la librerìa de visualización de datos Plotly y hace uso de los siguientes recursos para su ejecución</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1 style="text-align: left;">Generación de Gráficas</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Para la generación de cualquier gráfica, necesitamos hacer uso de librerías que nos permiten utilizar los diferentes componentes de Plotly en este caso</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">import</span> <span class="nn">chart_studio.plotly</span> <span class="k">as</span> <span class="nn">py</span>
+<span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="kn">import</span> <span class="n">Scatter</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Stream</span><span class="p">,</span> <span class="n">YAxis</span><span class="p">,</span> <span class="n">Marker</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Para acceder a la colección almacenada en MongoDB requerimos hacer uso de las siguientes librerías</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> <span class="c1"># crear interfaz</span>
+<span class="kn">import</span> <span class="nn">sys</span> <span class="c1"># conexion a host</span>
+<span class="kn">import</span> <span class="nn">pymongo</span> <span class="c1"># API MongoDB</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Conexión a cliente MongoDB</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mongoClient</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="mi">27017</span><span class="p">)</span> <span class="c1">#Conexión a localHost</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">mongoClient</span><span class="o">.</span><span class="n">gp</span> <span class="c1">#Base de datos GP</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">vuelos</span> <span class="c1">#Colección Vuelos</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Conexión a Plotly</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span><span class="s1">&#39;lderazo1&#39;</span><span class="p">,</span> <span class="s1">&#39;TtDeC4A54WSSm0pNWMD8&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Generación DataFrame</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">El siguiente archivo hace referencia a los vuelos realizados en estados unidos, especìficamente en New York durante el año 2013</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Inicializamos y limitamos los componentes de los cuales haremos uso para la generaciòn de la gráfica</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>tailnum</th>
+      <th>flight</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5e45b7fc5f6b5037bf9b4cbe</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>2</td>
+      <td>830</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>N14228</td>
+      <td>1545</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5e45b7fc5f6b5037bf9b4cbf</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>4</td>
+      <td>850</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>N24211</td>
+      <td>1714</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5e45b7fc5f6b5037bf9b4cc0</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>2</td>
+      <td>923</td>
+      <td>33</td>
+      <td>AA</td>
+      <td>N619AA</td>
+      <td>1141</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5e45b7fc5f6b5037bf9b4cc1</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>N804JB</td>
+      <td>725</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5e45b7fc5f6b5037bf9b4cc2</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>N668DN</td>
+      <td>461</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>5</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;"><b>Fuente: </b>GitHub [Conjunto de datos]. Tomado de usuario Yankev.<br><b>URL: </b><a>https://raw.githubusercontent.com/yankev/testing/master/datasets/nycflights.csv/</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<H1 style="text-align: left;">Creación de Componentes</H1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Generación de un Slider en base a los meses del año</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mes</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Mes:&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Generación de un CheckBox, en este caso será para que el usuario controle si gusta filtrar o no por fecha la cantidad de vuelos</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fecha</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fecha: &#39;</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Generación del contenedor superior que controlará tanto la fecha como los meses de vuelos</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">contUno</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">fecha</span><span class="p">,</span> <span class="n">mes</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Se genera las listas despegables, mediante los campos unicos que formarán parte de nuestra lista de filtrado, en este caso Aereolineas</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">aerolinea</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Aereolinea:   &#39;</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;DL&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Se genera las listas despegables, mediante los campos unicos que formarán parte de nuestra lista de filtrado, en este caso Aereopuerto de Origen</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">origen</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;LGA&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Aereopuerto de Origen:&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Generación de layout vacío, y especificación del tipo de gráfica a representar (Histogramas de retraso en llegada y salida)</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">histUno</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;arr_delay&#39;</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Retraso en llegada&#39;</span><span class="p">)</span>
+<span class="n">histDos</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dep_delay&#39;</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Retraso en salida&#39;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">FigureWidget</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">histUno</span><span class="p">,</span> <span class="n">histDos</span><span class="p">],</span><span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Base de datos de vuelos en la ciudad de Nueva York&#39;</span><span class="p">),</span><span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;overlay&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Validación que es realizada con el fin de verificar los campos ùnicos</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">validacion</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">origin</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="ow">and</span> <span class="n">textbox</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">En este caso, tanto los mètodos de validación como de respuesta son llamados una vez el usuario interactùa con los componentes de la gráfica (checkbox, slider y dropDown list)</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">respuesta</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">validacion</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">fecha</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">filter_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">k</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">mes</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">aerolinea</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">origen</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span>
+            <span class="n">temp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">filter_list</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filter_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="ow">and</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;DL&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">origen</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span>
+            <span class="n">temp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">filter_list</span><span class="p">]</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;arr_delay&#39;</span><span class="p">]</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;dep_delay&#39;</span><span class="p">]</span>
+        <span class="k">with</span> <span class="n">g</span><span class="o">.</span><span class="n">batch_update</span><span class="p">():</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">barmode</span> <span class="o">=</span> <span class="s1">&#39;overlay&#39;</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Retraso en minutos&#39;</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Numero de retrasos&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align: justify;">Mediante observe, el componente queda expectante a que el usuario interactùe en la gráfica, de esta forma se generan los valores que pueden ser visualizados en tiempo real, otro aspecto a tomar en cuenta es que si el usuario decide no interactuar en el sistema se muestran los valores por defecto que le corresponden al aereopuerto LGA y la aereolìnea DL.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">origen</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">aerolinea</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">mes</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">fecha</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">contDos</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">origen</span><span class="p">,</span> <span class="n">aerolinea</span><span class="p">])</span>
+<span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">contUno</span><span class="p">,</span><span class="n">contDos</span><span class="p">,</span><span class="n">g</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="6197e4b8-a79b-4aef-9603-d752070c4587"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6197e4b8-a79b-4aef-9603-d752070c4587');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "5167133564c24a1ba744c807e2c9e407", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://cloud.githubusercontent.com/assets/12302455/16637308/4e476280-43ac-11e6-9fd3-ada2c9506ee1.gif"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

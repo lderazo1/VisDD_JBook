@@ -20,8 +20,8 @@
 - header: Universidad Técnica Particular de Loja
 
 # A chapter w/ a collection of sections beneath it
-- title: Visualización dinámica de datos
-  url: /features/features
+- title: MongoDB
+  url: /features/intro
   not_numbered: true
   expand_sections: true
   sections:
@@ -31,6 +31,9 @@
   - title: Bokeh
     url: /features/Bokeh
     not_numbered: true
-  - title: Widgets Bokeh
+  - title: Bokeh Widgets
     url: /features/Widgets_Bokeh
+    not_numbered: true
+  - title: Plotly Widgets
+    url: /features/plotly_wdg
     not_numbered: true
